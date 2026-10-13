@@ -1,0 +1,16 @@
+{
+  "name": "Огонёк — сборник игр вожатого",
+  "short_name": "Огонёк",
+  "description": "Игры, свечки и общелагерные дела для вожатых. Работает без интернета.",
+  "lang": "ru",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#7D8653",
+  "theme_color": "#7D8653",
+  "icons": [
+    { "src": "img/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "img/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

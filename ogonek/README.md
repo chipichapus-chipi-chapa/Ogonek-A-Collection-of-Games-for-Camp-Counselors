@@ -1,8 +1,17 @@
-# Ogonek — A Collection of Games for Camp Counselors
+<p align="center">
+  <img src="../docs/banner-dev.png" alt="Огонёк — под капотом" width="100%">
+</p>
 
-**Огонёк — сборник игр вожатого.** Мобильное приложение сделано по заказу студенческого педагогического отряда (СПО) «Маэстро» РГПУ им. А. И. Герцена.
+<h1 align="center">Ogonek — A Collection of Games for Camp Counselors</h1>
 
-## Суть проекта
+<p align="center">
+  <b>Огонёк — сборник игр вожатого.</b> Мобильное приложение, сделанное по заказу студенческого педагогического отряда (СПО) «Маэстро» РГПУ им. А. И. Герцена.<br>
+  Это папка с исходниками на Angular 19. Обзор проекта и брендбук — в <a href="../README.md">главном README</a>.
+</p>
+
+<p align="center"><img src="../docs/screens.png" alt="Экраны приложения" width="100%"></p>
+
+## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> Суть проекта
 
 Вожатому в лагере постоянно нужна подходящая игра: пока отряд ждёт столовую, на вечерней свечке, на спортивной площадке, на общелагерном деле. Обычно такие игры хранятся в тетрадках, распечатках и чатах. «Огонёк» собирает их в одном месте, в телефоне, и работает **без интернета**: в лагере связь часто плохая.
 
@@ -14,7 +23,38 @@
 
 Технически это PWA на Angular 19: приложение ставится на главный экран телефона, а системная кнопка «назад» возвращает на предыдущий экран.
 
-## Структура
+## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Стилистика в коде
+
+<p align="center"><img src="../docs/palette.png" alt="Палитра" width="100%"></p>
+
+Цвета, радиусы и шрифты заданы CSS-переменными в `src/styles.scss`:
+
+```scss
+:root {
+  --olive: #7D8653;  --olive-dark: #5F6840;  --red: #8C2219;  --red-bright: #D9302A;
+  --kraft: #D8BE8E;  --cream: #F3EAD7;       --paper: #FBF6EA; --yellow: #F7C51E;
+  --ink: #2C2A22;    --blue: #3561DB;        --orange: #FF8A1E;
+
+  --f-head: 'Yanone Kaffeesatz';  // заголовки, кнопки — капсом
+  --f-body: 'Nunito';             // текст
+  --f-hand: 'Neucha';             // подводки и советы
+}
+```
+
+Огонёк — компонент `<og-ogonek mood="wink" [size]="96" />` (`src/app/ui.ts`). Сам рисунок собирается в SVG в `src/app/mascot.ts`.
+
+<p align="center"><img src="../docs/mascot.png" alt="Эмоции Огонька" width="100%"></p>
+
+| `mood` | | Где используется |
+|---|:---:|---|
+| `smile` | <img src="../docs/mascot/ogonek-smile.svg" width="40"> | главная, статьи |
+| `wink` | <img src="../docs/mascot/ogonek-wink.svg" width="40"> | заставка, советы вожатому |
+| `love` | <img src="../docs/mascot/ogonek-love.svg" width="40"> | избранное, общелагерные |
+| `cool` | <img src="../docs/mascot/ogonek-cool.svg" width="40"> | старший возраст, «Мои статьи» |
+| `wow` | <img src="../docs/mascot/ogonek-wow.svg" width="40"> | ничего не нашлось, ошибка |
+| `sleepy` | <img src="../docs/mascot/ogonek-sleepy.svg" width="40"> | пустой раздел |
+
+## <img src="../docs/mascot/ogonek-cool.svg" width="36" align="absmiddle"> Структура
 
 ```
 src/app/
@@ -31,14 +71,14 @@ public/                иконки, манифест, Огонёк в SVG
 ngsw-config.json       офлайн-кэш (Angular Service Worker)
 ```
 
-## Запуск
+## <img src="../docs/mascot/ogonek-smile.svg" width="36" align="absmiddle"> Запуск
 
 ```bash
 npm install
 npm start                # разработка на компьютере: http://localhost:4200
 ```
 
-## Открыть на телефоне
+## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> Открыть на телефоне
 
 Телефон и компьютер должны быть в одной Wi-Fi сети.
 
@@ -51,7 +91,7 @@ npm run phone:prod       # сборка + сервер на http://<IP-комп�
 
 > По локальному адресу (http) приложение открывается, но браузер не включает офлайн-режим и установку: для этого нужен HTTPS.
 
-## Установить на телефоны насовсем
+## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Установить на телефоны насовсем
 
 1. `npx ng build` → папка `dist/ogonek/browser`.
 2. Выложи её на любой HTTPS-хостинг, например перетащи на https://app.netlify.com/drop.
@@ -62,7 +102,7 @@ npm run phone:prod       # сборка + сервер на http://<IP-комп�
 
 APK можно получить через https://www.pwabuilder.com по ссылке из шага 2.
 
-## Разметка текста статьи
+## <img src="../docs/mascot/ogonek-wow.svg" width="36" align="absmiddle"> Разметка текста статьи
 
 ```
 ## Подзаголовок
@@ -70,3 +110,10 @@ APK можно получить через https://www.pwabuilder.com по сс�
 > совет вожатому (плашка с Огоньком)
 **жирный**
 ```
+
+---
+
+<p align="center">
+  <img src="../docs/mascot/ogonek-smile.svg" width="64"><br>
+  <i>СПО «Маэстро» · гореть самому — зажигать других</i>
+</p>

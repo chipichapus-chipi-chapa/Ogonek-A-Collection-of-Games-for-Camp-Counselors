@@ -1,33 +1,35 @@
 <p align="center">
-  <img src="../docs/banner-dev.png" alt="Огонёк — под капотом" width="100%">
+  <img src="../docs/en/banner-dev.png" alt="Ogonek — under the hood" width="100%">
 </p>
 
 <h1 align="center">Ogonek — A Collection of Games for Camp Counselors</h1>
 
 <p align="center">
-  <b>Огонёк — сборник игр вожатого.</b> Мобильное приложение, сделанное по заказу студенческого педагогического отряда (СПО) «Маэстро» РГПУ им. А. И. Герцена.<br>
-  Это папка с исходниками на Angular 19. Обзор проекта и брендбук — в <a href="../README.md">главном README</a>.
+  <b>Ogonek (Огонёк, "little flame") — a game collection for camp counselors.</b> A mobile app made for the student teaching squad (SPO) «Maestro» of Herzen State Pedagogical University.<br>
+  This folder contains the Angular 19 source code. Project overview and brand book are in the <a href="../README.md">main README</a>.
 </p>
 
-<p align="center"><img src="../docs/screens.png" alt="Экраны приложения" width="100%"></p>
+<p align="center"><img src="../docs/screens.png" alt="App screens" width="100%"></p>
 
-## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> Суть проекта
+## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> What it is
 
-Вожатому в лагере постоянно нужна подходящая игра: пока отряд ждёт столовую, на вечерней свечке, на спортивной площадке, на общелагерном деле. Обычно такие игры хранятся в тетрадках, распечатках и чатах. «Огонёк» собирает их в одном месте, в телефоне, и работает **без интернета**: в лагере связь часто плохая.
+A camp counselor constantly needs the right game: while the group waits for the dining hall, at the evening circle, on the sports ground, at a camp-wide event. Usually these games live in notebooks, printouts and chats. Ogonek gathers them in one place, on the phone, and works **offline**: connectivity at camps is often poor.
 
-- **Подбор по возрасту:** младший (7–10 лет), средний (11–13), старший (14–17) и общелагерные мероприятия.
-- **Подбор по виду активности:** игры-минутки, спортивные, свечки, на знакомство, на сплочение, интеллектуальные, творческие.
-- **Своя копилка:** вожатый отмечает игры в избранное, пишет свои статьи и создаёт свои виды активностей (фильтры).
-- **Обмен:** свои статьи можно сохранить в файл и передать другому вожатому.
-- **Фирменный стиль отряда:** олива, бордо, крафт и маскот Огонёк — синяя мордашка с волосами-пламенем («гореть самому — зажигать других»).
+- **Filter by age:** junior (7–10 years), middle (11–13), senior (14–17) and camp-wide events.
+- **Filter by activity type:** minute games, sports games, evening circles («свечки»), icebreakers, team building, brain games, creative games.
+- **Personal collection:** counselors mark favorites, write their own articles and create their own activity types (filters).
+- **Sharing:** your articles can be saved to a file and passed to another counselor.
+- **Squad brand style:** olive, burgundy, kraft paper and the mascot Ogonek — a blue face with flaming hair ("burn yourself — light up others").
 
-Технически это PWA на Angular 19: приложение ставится на главный экран телефона, а системная кнопка «назад» возвращает на предыдущий экран.
+Technically it is a PWA built with Angular 19: it installs on the phone's home screen, and the system back button returns to the previous screen.
 
-## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Стилистика в коде
+> The app interface and the built-in game texts are in Russian.
 
-<p align="center"><img src="../docs/palette.png" alt="Палитра" width="100%"></p>
+## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Style in code
 
-Цвета, радиусы и шрифты заданы CSS-переменными в `src/styles.scss`:
+<p align="center"><img src="../docs/en/palette.png" alt="Palette" width="100%"></p>
+
+Colors and fonts are CSS variables in `src/styles.scss`:
 
 ```scss
 :root {
@@ -35,85 +37,87 @@
   --kraft: #D8BE8E;  --cream: #F3EAD7;       --paper: #FBF6EA; --yellow: #F7C51E;
   --ink: #2C2A22;    --blue: #3561DB;        --orange: #FF8A1E;
 
-  --f-head: 'Yanone Kaffeesatz';  // заголовки, кнопки — капсом
-  --f-body: 'Nunito';             // текст
-  --f-hand: 'Neucha';             // подводки и советы
+  --f-head: 'Yanone Kaffeesatz';  // headings, buttons — all caps
+  --f-body: 'Nunito';             // body text
+  --f-hand: 'Neucha';             // leads and tips
 }
 ```
 
-Огонёк — компонент `<og-ogonek mood="wink" [size]="96" />` (`src/app/ui.ts`). Сам рисунок собирается в SVG в `src/app/mascot.ts`.
+Ogonek is the `<og-ogonek mood="wink" [size]="96" />` component (`src/app/ui.ts`). The drawing itself is built as SVG in `src/app/mascot.ts`.
 
-<p align="center"><img src="../docs/mascot.png" alt="Эмоции Огонька" width="100%"></p>
+<p align="center"><img src="../docs/en/mascot.png" alt="Ogonek's moods" width="100%"></p>
 
-| `mood` | | Где используется |
+| `mood` | | Where it is used |
 |---|:---:|---|
-| `smile` | <img src="../docs/mascot/ogonek-smile.svg" width="40"> | главная, статьи |
-| `wink` | <img src="../docs/mascot/ogonek-wink.svg" width="40"> | заставка, советы вожатому |
-| `love` | <img src="../docs/mascot/ogonek-love.svg" width="40"> | избранное, общелагерные |
-| `cool` | <img src="../docs/mascot/ogonek-cool.svg" width="40"> | старший возраст, «Мои статьи» |
-| `wow` | <img src="../docs/mascot/ogonek-wow.svg" width="40"> | ничего не нашлось, ошибка |
-| `sleepy` | <img src="../docs/mascot/ogonek-sleepy.svg" width="40"> | пустой раздел |
+| `smile` | <img src="../docs/mascot/ogonek-smile.svg" width="40"> | home, articles |
+| `wink` | <img src="../docs/mascot/ogonek-wink.svg" width="40"> | splash screen, counselor tips |
+| `love` | <img src="../docs/mascot/ogonek-love.svg" width="40"> | favorites, camp-wide events |
+| `cool` | <img src="../docs/mascot/ogonek-cool.svg" width="40"> | senior age group, "My articles" |
+| `wow` | <img src="../docs/mascot/ogonek-wow.svg" width="40"> | nothing found, error |
+| `sleepy` | <img src="../docs/mascot/ogonek-sleepy.svg" width="40"> | empty section |
 
-## <img src="../docs/mascot/ogonek-cool.svg" width="36" align="absmiddle"> Структура
+## <img src="../docs/mascot/ogonek-cool.svg" width="36" align="absmiddle"> Structure
 
 ```
 src/app/
-  app.routes.ts        маршруты (#/home, #/age/:ageId, #/age/:ageId/:typeId, #/game/:id, #/search, #/fav, #/my, #/new, #/edit/:id)
-  app.component.ts     оболочка: экран + нижнее меню + тост
-  store.service.ts     данные: встроенная база + свои статьи/фильтры/избранное (signals + localStorage)
-  seed.ts              встроенная база игр — сюда добавлять «официальные» игры
-  mascot.ts            Огонёк в SVG (6 эмоций)
-  ui.ts                общие компоненты: <og-ogonek>, <og-top>, <og-game-item>, <og-rich-text>
-  pages/               экраны: splash, home, age, games, game, search, fav, my, form
-src/styles.scss        стили и цвета бренда (:root)
-src/fonts/             шрифты (вшиваются в сборку)
-public/                иконки, манифест, Огонёк в SVG
-ngsw-config.json       офлайн-кэш (Angular Service Worker)
+  app.routes.ts        routes (#/home, #/age/:ageId, #/age/:ageId/:typeId, #/game/:id, #/search, #/fav, #/my, #/new, #/edit/:id)
+  app.component.ts     shell: screen + bottom tab bar + toast
+  store.service.ts     data: built-in collection + own articles/filters/favorites (signals + localStorage)
+  seed.ts              built-in game collection — add "official" games here
+  mascot.ts            Ogonek as SVG (6 moods)
+  ui.ts                shared components: <og-ogonek>, <og-top>, <og-game-item>, <og-rich-text>
+  pages/               screens: splash, home, age, games, game, search, fav, my, form
+src/styles.scss        styles and brand colors (:root)
+src/fonts/             fonts (bundled into the build)
+public/                icons, manifest, Ogonek SVGs
+ngsw-config.json       offline cache (Angular Service Worker)
 ```
 
-## <img src="../docs/mascot/ogonek-smile.svg" width="36" align="absmiddle"> Запуск
+## <img src="../docs/mascot/ogonek-smile.svg" width="36" align="absmiddle"> Run
 
 ```bash
 npm install
-npm start                # разработка на компьютере: http://localhost:4200
+npm start                # development on your computer: http://localhost:4200
 ```
 
-## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> Открыть на телефоне
+## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> Open on a phone
 
-Телефон и компьютер должны быть в одной Wi-Fi сети.
+The phone and the computer must be on the same Wi-Fi network.
 
 ```bash
-npm run phone:prod       # сборка + сервер на http://<IP-компьютера>:8090
+npm run phone:prod       # build + server at http://<computer-IP>:8090
 ```
 
-Открой на телефоне `http://<IP-компьютера>:8090` (IP смотри командой `hostname -I`).
-Для разработки с автообновлением есть `npm run phone` (порт 4200).
+Open `http://<computer-IP>:8090` on the phone (find the IP with `hostname -I`).
+For development with live reload there is `npm run phone` (port 4200).
 
-> По локальному адресу (http) приложение открывается, но браузер не включает офлайн-режим и установку: для этого нужен HTTPS.
+> Over a local address (http) the app opens, but the browser does not enable offline mode or installation: that requires HTTPS.
 
-## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Установить на телефоны насовсем
+## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Install on phones permanently
 
-1. `npx ng build` → папка `dist/ogonek/browser`.
-2. Выложи её на любой HTTPS-хостинг, например перетащи на https://app.netlify.com/drop.
-3. Открой ссылку на телефоне:
-   - на Android: меню ⋮ → «Установить приложение»;
-   - на iPhone: «Поделиться» → «На экран „Домой“».
-4. После первого открытия всё работает без интернета.
+1. `npx ng build` → folder `dist/ogonek/browser`.
+2. Publish it on any HTTPS hosting, for example drag it onto https://app.netlify.com/drop.
+3. Open the link on the phone:
+   - Android: ⋮ menu → "Install app";
+   - iPhone: "Share" → "Add to Home Screen".
+4. After the first launch everything works offline.
 
-APK можно получить через https://www.pwabuilder.com по ссылке из шага 2.
+An APK can be generated with https://www.pwabuilder.com from the link in step 2.
 
-## <img src="../docs/mascot/ogonek-wow.svg" width="36" align="absmiddle"> Разметка текста статьи
+Full step-by-step guide: [INSTALL.md](../INSTALL.md).
+
+## <img src="../docs/mascot/ogonek-wow.svg" width="36" align="absmiddle"> Article text markup
 
 ```
-## Подзаголовок
-- пункт списка
-> совет вожатому (плашка с Огоньком)
-**жирный**
+## Subheading
+- list item
+> counselor tip (shown in a box with Ogonek)
+**bold**
 ```
 
 ---
 
 <p align="center">
   <img src="../docs/mascot/ogonek-smile.svg" width="64"><br>
-  <i>СПО «Маэстро» · гореть самому — зажигать других</i>
+  <i>SPO «Maestro» · burn yourself — light up others</i>
 </p>

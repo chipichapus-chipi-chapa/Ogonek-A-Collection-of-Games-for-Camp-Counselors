@@ -1,125 +1,127 @@
 <p align="center">
-  <img src="docs/banner.png" alt="Огонёк — сборник игр вожатого" width="100%">
+  <img src="docs/en/banner.png" alt="Ogonek — games for camp counselors" width="100%">
 </p>
 
 <h1 align="center">Ogonek — A Collection of Games for Camp Counselors</h1>
 
 <p align="center">
-  <b>Огонёк — сборник игр вожатого.</b><br>
-  Мобильное приложение, сделанное по заказу студенческого педагогического отряда <b>СПО «Маэстро»</b> РГПУ им. А. И. Герцена.
+  <b>Ogonek (Огонёк, "little flame") — a game collection for camp counselors.</b><br>
+  A mobile app made to order for the student teaching squad <b>SPO «Maestro»</b> of Herzen State Pedagogical University (Saint Petersburg).
 </p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Angular-19-8C2219?style=for-the-badge&logo=angular&logoColor=F3EAD7" alt="Angular 19">
-  <img src="https://img.shields.io/badge/PWA-офлайн-7D8653?style=for-the-badge&logoColor=F3EAD7" alt="PWA офлайн">
-  <img src="https://img.shields.io/badge/игр_в_базе-57-F7C51E?style=for-the-badge" alt="57 игр">
-  <img src="https://img.shields.io/badge/СПО-Маэстро-D8BE8E?style=for-the-badge" alt="СПО Маэстро">
+  <img src="https://img.shields.io/badge/PWA-offline-7D8653?style=for-the-badge&logoColor=F3EAD7" alt="PWA offline">
+  <img src="https://img.shields.io/badge/games-57-F7C51E?style=for-the-badge" alt="57 games">
+  <img src="https://img.shields.io/badge/SPO-Maestro-D8BE8E?style=for-the-badge" alt="SPO Maestro">
 </p>
 
 <p align="center">
-  <img src="docs/screens.png" alt="Экраны приложения: заставка, меню, виды активности, статья, поиск" width="100%">
+  <img src="docs/screens.png" alt="App screens: splash, main menu, activity types, article, search" width="100%">
 </p>
 
+> The app interface and the built-in game texts are in Russian; this branch contains the documentation in English.
+
 ---
 
-## <img src="docs/mascot/ogonek-wink.svg" width="40" align="absmiddle"> Суть проекта
+## <img src="docs/mascot/ogonek-wink.svg" width="40" align="absmiddle"> What it is
 
-Вожатому в лагере постоянно нужна подходящая игра: пока отряд ждёт столовую, на вечерней свечке, на спортивной площадке, на общелагерном деле. Обычно такие игры хранятся в тетрадках, распечатках и чатах.
+A camp counselor constantly needs the right game: while the group waits for the dining hall, at the evening circle, on the sports ground, at a camp-wide event. Usually these games live in notebooks, printouts and chats.
 
-**«Огонёк» собирает их в одном месте, в телефоне, и работает без интернета**: в лагере связь часто плохая.
+**Ogonek gathers them in one place, on the phone, and works offline**: connectivity at camps is often poor.
 
-| Что умеет | Как это выглядит |
+| Feature | What it means |
 |---|---|
-| 🎯 **Подбор по возрасту** | младший (7–10 лет), средний (11–13), старший (14–17) и общелагерные мероприятия |
-| 🗂 **Подбор по виду активности** | игры-минутки, спортивные, свечки, на знакомство, на сплочение, интеллектуальные, творческие |
-| ♥ **Своя копилка** | избранное, свои статьи и свои виды активностей (фильтры) |
-| 📤 **Обмен** | свои статьи сохраняются в файл и передаются другому вожатому |
-| 📴 **Офлайн** | после первого открытия всё работает в режиме полёта |
-| ↩️ **Как обычное приложение** | иконка на рабочем столе, системная кнопка «назад» возвращает на предыдущий экран |
+| 🎯 **Filter by age** | junior (7–10 years), middle (11–13), senior (14–17) and camp-wide events |
+| 🗂 **Filter by activity type** | minute games, sports games, evening circles, icebreakers, team building, brain games, creative games |
+| ♥ **Personal collection** | favorites, your own articles and your own activity types (filters) |
+| 📤 **Sharing** | your articles are saved to a file and passed to another counselor |
+| 📴 **Offline** | after the first launch everything works in airplane mode |
+| ↩️ **Feels like a native app** | home screen icon; the system back button returns to the previous screen |
 
-### Как устроена навигация
+### Navigation
 
-1. **Заставка** с Огоньком → «Поехали!»
-2. **Главное меню**: младший, средний, старший возраст, общелагерные мероприятия
-3. **Возраст → вид активности** (игры-минутки, спортивные, свечки…) **→ список игр → текст игры**
-4. **Общелагерные** — сразу список мероприятий → текст
+1. **Splash screen** with Ogonek → "Let's go!"
+2. **Main menu**: junior, middle, senior age groups, camp-wide events
+3. **Age group → activity type** (minute games, sports, evening circles…) **→ game list → game text**
+4. **Camp-wide events** — straight to the list of events → text
 
 ---
 
-## <img src="docs/mascot/ogonek-love.svg" width="40" align="absmiddle"> Стилистика
+## <img src="docs/mascot/ogonek-love.svg" width="40" align="absmiddle"> Visual style
 
-Фирменный стиль взят с постов отряда «Выборы ком.состава 2026–2027»: бумажный коллаж, зернистый фон, повёрнутый лист крафта, красная звезда-взрыв и фото в кремовой рамке. Структура экранов — крупные скруглённые карточки и кнопки-«таблетки».
+The brand style comes from the squad's "Commanding staff elections 2026–2027" posts: a paper collage, grainy background, a tilted sheet of kraft paper, a red starburst and photos in cream frames. The screen layout uses large rounded cards and pill-shaped buttons.
 
-### Маскот — Огонёк
+### Mascot — Ogonek
 
-Синяя мордашка с волосами-пламенем — вожатский дух: **«гореть самому — зажигать других»**. Нарисован с лёгкой «карандашной» неровностью, как на постах. У Огонька шесть эмоций, и каждая отвечает за свою ситуацию в приложении:
+A blue face with flaming hair — the counselor spirit: **"burn yourself — light up others"**. Drawn with a slight hand-drawn wobble, like on the posts. Ogonek has six moods, each used in its own situation in the app:
 
-<p align="center"><img src="docs/mascot.png" alt="Шесть эмоций Огонька" width="100%"></p>
+<p align="center"><img src="docs/en/mascot.png" alt="Ogonek's six moods" width="100%"></p>
 
-| | Эмоция | Где появляется |
+| | Mood | Where it appears |
 |:---:|---|---|
-| <img src="docs/mascot/ogonek-smile.svg" width="48"> | Улыбка | главная, статьи |
-| <img src="docs/mascot/ogonek-wink.svg" width="48"> | Подмигивает | заставка, советы вожатому |
-| <img src="docs/mascot/ogonek-love.svg" width="48"> | Влюблён | избранное, общелагерные |
-| <img src="docs/mascot/ogonek-cool.svg" width="48"> | В очках | старший возраст, «Мои статьи» |
-| <img src="docs/mascot/ogonek-wow.svg" width="48"> | Удивлён | ничего не нашлось |
-| <img src="docs/mascot/ogonek-sleepy.svg" width="48"> | Спит | пустой раздел |
+| <img src="docs/mascot/ogonek-smile.svg" width="48"> | Smile | home, articles |
+| <img src="docs/mascot/ogonek-wink.svg" width="48"> | Wink | splash screen, counselor tips |
+| <img src="docs/mascot/ogonek-love.svg" width="48"> | In love | favorites, camp-wide events |
+| <img src="docs/mascot/ogonek-cool.svg" width="48"> | Cool | senior age group, "My articles" |
+| <img src="docs/mascot/ogonek-wow.svg" width="48"> | Surprised | nothing found |
+| <img src="docs/mascot/ogonek-sleepy.svg" width="48"> | Sleepy | empty section |
 
-Векторные файлы: [`docs/mascot/`](docs/mascot/).
+Vector files: [`docs/mascot/`](docs/mascot/).
 
-### Цвета
+### Colors
 
-<p align="center"><img src="docs/palette.png" alt="Палитра" width="100%"></p>
+<p align="center"><img src="docs/en/palette.png" alt="Palette" width="100%"></p>
 
-| Цвет | HEX | Где используется |
+| Color | HEX | Used for |
 |---|---|---|
-| Олива | `#7D8653` | основной фон, младшие и средние |
-| Олива тёмная | `#5F6840` | акцентные карточки, подзаголовки |
-| Бордо | `#8C2219` | второй фон, главные кнопки, старшие |
-| Красная звезда | `#D9302A` | звезда-взрыв |
-| Крафт | `#D8BE8E` | бумага-подложка, рамки |
-| Кремовый | `#F3EAD7` | карточки, текст на тёмном |
-| Жёлтый акцент | `#F7C51E` | одно-два ключевых слова в заголовке, активные фильтры |
-| Синий Огонька | `#3561DB` | только маскот |
-| Пламя | `#FF8A1E` | маркеры списков, детали |
+| Olive | `#7D8653` | main background, junior and middle groups |
+| Dark olive | `#5F6840` | accent cards, subheadings |
+| Burgundy | `#8C2219` | second background, primary buttons, senior group |
+| Star red | `#D9302A` | the starburst |
+| Kraft | `#D8BE8E` | paper backing, frames |
+| Cream | `#F3EAD7` | cards, text on dark backgrounds |
+| Yellow accent | `#F7C51E` | one or two key words in a heading, active filters |
+| Ogonek blue | `#3561DB` | mascot only |
+| Flame | `#FF8A1E` | list bullets, details |
 
-### Шрифты
+### Fonts
 
-<p align="center"><img src="docs/fonts.png" alt="Шрифты" width="100%"></p>
+<p align="center"><img src="docs/en/fonts.png" alt="Fonts" width="100%"></p>
 
-Все три шрифта с кириллицей и вшиты в приложение, поэтому работают офлайн.
+All three fonts support Cyrillic and are bundled into the app, so they work offline.
 
-- **Yanone Kaffeesatz** — заголовки и кнопки, всегда капсом: плакатный характер постов.
-- **Neucha** — рукописные подводки и советы вожатому (вместо цитат из песен на постах).
-- **Nunito** — текст статей и интерфейс.
+- **Yanone Kaffeesatz** — headings and buttons, always in caps: the poster feel of the squad's posts.
+- **Neucha** — handwritten leads and counselor tips (in place of the song quotes on the posts).
+- **Nunito** — article text and interface.
 
-### Голос
+### Voice
 
-Говорим как старший товарищ-вожатый: на «ты», коротко, с огоньком, без канцелярита.
+We talk like an older fellow counselor: informal, short, with a spark, no bureaucratese.
 
-| ✅ Так | ❌ Не так |
+| ✅ Do | ❌ Don't |
 |---|---|
-| «Кого зажигаем?» | «Выберите возрастную категорию» |
-| «Здесь пока пусто. Добавь свою игру — Огонёк проснётся!» | «Данные отсутствуют» |
+| "Who are we lighting up today?" | "Select an age category" |
+| "Nothing here yet. Add your own game — Ogonek will wake up!" | "No data available" |
 
-Полный брендбук: [`brandbook.html`](brandbook.html). Его нужно открыть в браузере через локальный сервер, см. «Быстрый старт».
+Full brand book (in Russian): [`brandbook.html`](brandbook.html). Open it in a browser through a local server, see "Quick start".
 
 ---
 
-## <img src="docs/mascot/ogonek-smile.svg" width="40" align="absmiddle"> Установка на телефон
+## <img src="docs/mascot/ogonek-smile.svg" width="40" align="absmiddle"> Install on a phone
 
-Пошаговая инструкция для вожатых и для того, кто выкладывает приложение: **[INSTALL.md](INSTALL.md)**.
+Step-by-step guide for counselors and for whoever publishes the app: **[INSTALL.md](INSTALL.md)**.
 
-## <img src="docs/mascot/ogonek-cool.svg" width="40" align="absmiddle"> Что в репозитории
+## <img src="docs/mascot/ogonek-cool.svg" width="40" align="absmiddle"> Repository contents
 
-| Папка / файл | Что это |
+| Folder / file | What it is |
 |---|---|
-| [`ogonek/`](ogonek/) | **Основное приложение** на Angular 19, подробнее в [ogonek/README.md](ogonek/README.md) |
-| [`brandbook.html`](brandbook.html) | Брендбук: маскот, цвета, шрифты, графические элементы, интерфейс, голос бренда |
-| [`docs/`](docs/) | Картинки для README и Огонёк в SVG |
-| [`app/`](app/) | Первая версия на чистом HTML/JS (прототип). Брендбук берёт из неё шрифты, Огонька и живые экраны |
+| [`ogonek/`](ogonek/) | **The main app**, Angular 19, see [ogonek/README.md](ogonek/README.md) |
+| [`brandbook.html`](brandbook.html) | Brand book: mascot, colors, fonts, graphic elements, interface, voice |
+| [`docs/`](docs/) | Images for the READMEs and Ogonek SVGs (`docs/en/` — English versions) |
+| [`app/`](app/) | First version in plain HTML/JS (prototype). The brand book takes fonts, Ogonek and live screens from it |
 
-## <img src="docs/mascot/ogonek-wow.svg" width="40" align="absmiddle"> Быстрый старт
+## <img src="docs/mascot/ogonek-wow.svg" width="40" align="absmiddle"> Quick start
 
 ```bash
 cd ogonek
@@ -127,20 +129,20 @@ npm install
 npm start
 ```
 
-Откроется http://localhost:4200. Чтобы открыть приложение на телефоне в той же Wi-Fi сети:
+This opens http://localhost:4200. To open the app on a phone on the same Wi-Fi network:
 
 ```bash
 cd ogonek
 npm run phone:prod
 ```
 
-Потом на телефоне откройте `http://<IP-компьютера>:8090`.
+Then open `http://<computer-IP>:8090` on the phone.
 
-Брендбук: запустите `python3 -m http.server 8765` в корне репозитория и откройте http://localhost:8765/brandbook.html.
+Brand book: run `python3 -m http.server 8765` in the repository root and open http://localhost:8765/brandbook.html.
 
 ---
 
 <p align="center">
   <img src="docs/mascot/ogonek-sleepy.svg" width="64"><br>
-  <i>Сделано для СПО «Маэстро» · гореть самому — зажигать других</i>
+  <i>Made for SPO «Maestro» · burn yourself — light up others</i>
 </p>

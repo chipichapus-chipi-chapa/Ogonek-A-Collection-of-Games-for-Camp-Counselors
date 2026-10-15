@@ -1,6 +1,7 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
+import { Capacitor } from '@capacitor/core';
 import { ConfirmComponent, ToastService } from './ui';
 
 @Component({
@@ -40,5 +41,11 @@ export class AppComponent {
       document.body.classList.toggle('red', r.paramMap.get('ageId') === 'senior');
     });
     inject(DestroyRef).onDestroy(() => sub.unsubscribe());
+
+    // Android-приложение: системная «назад» идёт по истории, с первого экрана — выход
+    if (Capacitor.isNativePlatform()) {
+      import('@capacitor/app').then(({ App }) =>
+        App.addListener('backButton', ({ canGoBack }) => (canGoBack ? history.back() : App.exitApp())));
+    }
   }
 }

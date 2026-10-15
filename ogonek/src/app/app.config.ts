@@ -1,6 +1,7 @@
 import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter, withComponentInputBinding, withHashLocation, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
+import { Capacitor } from '@capacitor/core';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
@@ -16,7 +17,8 @@ export const appConfig: ApplicationConfig = {
       withRouterConfig({ canceledNavigationResolution: 'computed' })
     ),
     provideServiceWorker('ngsw-worker.js', {
-      enabled: !isDevMode(),
+      // в APK все файлы уже внутри приложения — офлайн-кэш нужен только сайту
+      enabled: !isDevMode() && !Capacitor.isNativePlatform(),
       registrationStrategy: 'registerWhenStable:30000'
     })
   ]

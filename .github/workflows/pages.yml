@@ -1,0 +1,57 @@
+# Сайт на GitHub Pages: витрина (site/), приложение (app/) и брендбук (brandbook/)
+name: Сайт
+
+on:
+  push:
+    branches: [main]
+    paths: ['ogonek/**', 'site/**', 'brandbook/**', '.github/workflows/pages.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: ogonek/package-lock.json
+      - name: Сборка приложения
+        working-directory: ogonek
+        run: |
+          npm ci
+          npx ng build
+      - name: Сборка сайта
+        run: |
+          mkdir -p _site/ogonek/public _site/ogonek/src
+          cp -r site/. _site/
+          cp -r ogonek/dist/ogonek/browser _site/app
+          cp -r brandbook _site/brandbook
+          # брендбук и витрина берут шрифты, Огонька и иконки из исходников приложения
+          cp -r ogonek/src/fonts _site/ogonek/src/fonts
+          cp -r ogonek/public/img ogonek/public/icons ogonek/public/favicon.png _site/ogonek/public/
+          touch _site/.nojekyll
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

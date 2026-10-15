@@ -1,0 +1,33 @@
+/* Списки и пустые состояния */
+/* ─── Списки ─── */
+.list { display: grid; gap: 10px; padding: 0 16px; }
+.item {
+  display: flex; align-items: center; gap: 14px; padding: 14px 14px 14px 14px;
+  background: var(--cream); border-radius: var(--r-md); box-shadow: var(--shadow-soft); text-align: left; width: 100%;
+}
+.item:active { transform: scale(.985); background: var(--paper); }
+.item .ic {
+  width: 50px; height: 50px; flex: none; border-radius: 16px; display: grid; place-items: center; font-size: 25px;
+  background: var(--paper); border: 2px dashed var(--kraft);
+}
+.item .b { flex: 1; min-width: 0; }
+
+.item .ttl, .item .meta { display: block; }
+.item .ttl { font-weight: 800; font-size: 17px; line-height: 1.2; overflow-wrap: anywhere; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.item .meta { font-size: 13.5px; color: var(--ink-soft); margin-top: 3px; }
+.item .cnt {
+  flex: none; min-width: 34px; height: 30px; padding: 0 9px; border-radius: 999px; display: grid; place-items: center;
+  background: var(--olive); color: var(--cream); font-weight: 800; font-size: 14px;
+}
+.item .cnt.zero { background: transparent; color: var(--ink-soft); border: 1.5px solid var(--olive-soft); }
+.item .fav-dot { color: var(--red-bright); font-size: 18px; }
+.item .chev { color: var(--ink-soft); flex: none; }
+.item.game .ic { font-family: var(--f-head); font-weight: 700; font-size: 26px; color: var(--red); background: var(--paper); }
+.item .mine { display: inline-block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; background: var(--yellow); color: var(--ink); padding: 1px 6px; border-radius: 6px; margin-right: 6px; vertical-align: 1px; }
+
+.section-title { font-family: var(--f-head); font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: var(--cream); font-size: 24px; padding: 20px 16px 10px; }
+.section-title .hl { color: var(--yellow); }
+
+/* ─── Пусто ─── */
+.empty { text-align: center; padding: 30px 26px; color: var(--cream); }
+.empty p { font-family: var(--f-hand); font-size: 22px; margin: 10px 0 18px; line-height: 1.2; }

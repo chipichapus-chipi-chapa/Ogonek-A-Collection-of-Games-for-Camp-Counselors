@@ -1,0 +1,37 @@
+/* Главная: карточки возрастов */
+/* ─── Главная: 4 большие кнопки ─── */
+.age-grid { display: grid; gap: 14px; padding: 0 16px; }
+.age-card {
+  position: relative; display: flex; align-items: center; gap: 12px; min-height: 112px;
+  padding: 16px 12px 16px 20px; border-radius: var(--r-lg); box-shadow: var(--shadow); text-align: left; overflow: hidden;
+}
+.age-card:active { transform: translateY(3px); }
+.age-card .t { flex: 1; position: relative; z-index: 1; }
+.age-card h2 { font-size: 34px; }
+.age-card .s { font-family: var(--f-hand); font-size: 20px; margin-top: 4px; opacity: .9; }
+.age-card .ogonek { flex: none; margin: -10px -6px -16px 0; position: relative; z-index: 1; }
+.age-card.yellow { background: var(--yellow); color: var(--ink); }
+.age-card.olive { background: var(--olive-dark); color: var(--cream); }
+.age-card.red { background: var(--red); color: var(--cream); }
+.age-card.kraft { background: var(--kraft); color: var(--red); }
+.age-card.kraft::after {
+  content: ''; position: absolute; right: -30px; top: -40px; width: 180px; height: 180px; opacity: .9;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon fill='%23D9302A' points='50,0 58,32 88,10 68,40 100,48 68,58 90,90 58,70 50,100 42,70 12,92 32,60 0,52 32,40 10,12 42,30'/></svg>") center/contain no-repeat;
+}
+.age-card.olive::after, .age-card.red::after, .age-card.yellow::after {
+  content: ''; position: absolute; inset: 0; opacity: .12; pointer-events: none;
+  background-image: radial-gradient(currentColor 1px, transparent 1.3px); background-size: 8px 8px;
+}
+
+.quick { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px; }
+.quick a {
+  display: flex; align-items: center; gap: 10px; padding: 14px; border-radius: var(--r-md);
+  background: var(--cream); box-shadow: var(--shadow-soft); font-weight: 800; font-size: 15px; line-height: 1.15;
+}
+.quick a .ic { width: 38px; height: 38px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--paper); font-size: 20px; }
+
+@media (min-width: 600px) {
+  .age-grid { grid-template-columns: 1fr 1fr; }
+  .age-card { min-height: 150px; flex-direction: column; align-items: flex-start; }
+  .age-card .ogonek { align-self: flex-end; margin-top: -40px; }
+}

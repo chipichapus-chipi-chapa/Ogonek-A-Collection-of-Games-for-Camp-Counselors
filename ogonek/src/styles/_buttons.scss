@@ -1,0 +1,16 @@
+/* Кнопки */
+/* ─── Кнопки ─── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 54px; padding: 0 30px; border-radius: 999px;
+  background: var(--red); color: var(--cream);
+  font-family: var(--f-head); font-weight: 700; font-size: 26px; letter-spacing: .05em; text-transform: uppercase;
+  box-shadow: 0 5px 0 #5C140E, 0 10px 18px rgba(0, 0, 0, .18);
+  transition: transform .08s;
+}
+.btn:active { transform: translateY(3px); box-shadow: 0 2px 0 #5C140E; }
+.btn.yellow { background: var(--yellow); color: var(--ink); box-shadow: 0 5px 0 #B48C0C, 0 10px 18px rgba(0, 0, 0, .18); }
+.btn.ghost { background: transparent; color: var(--red); box-shadow: none; border: 2px solid var(--red); min-height: 48px; font-size: 22px; }
+.btn.block { width: 100%; }
+.link-btn { font-family: var(--f-body); font-weight: 700; color: var(--ink-soft); padding: 10px; font-size: 15px; }
+.btn.ghost.light { color: var(--cream); border-color: var(--cream); }

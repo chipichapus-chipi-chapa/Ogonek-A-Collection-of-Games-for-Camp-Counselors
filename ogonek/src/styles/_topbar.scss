@@ -1,0 +1,22 @@
+/* Шапка экрана */
+/* ─── Шапка ─── */
+.top {
+  position: sticky; top: 0; z-index: 5;
+  display: flex; align-items: center; gap: 12px;
+  padding: calc(14px + var(--safe-t)) 16px 12px;
+  background: linear-gradient(var(--olive) 70%, rgba(125, 134, 83, 0));
+}
+body.red .top { background: linear-gradient(var(--red) 70%, rgba(140, 34, 25, 0)); }
+.top h1 { flex: 1; min-width: 0; color: var(--cream); font-size: clamp(28px, 9vw, 34px); overflow-wrap: anywhere; }
+.top h1 .hl { color: var(--yellow); }
+.icon-btn {
+  width: 44px; height: 44px; flex: none; border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--cream); color: var(--ink); box-shadow: var(--shadow-soft);
+}
+.icon-btn svg { width: 22px; height: 22px; }
+.icon-btn:active { transform: scale(.94); }
+
+.pad { padding: 0 16px; }
+.lead { font-family: var(--f-hand); font-size: 21px; color: var(--cream); margin: 2px 0 18px; line-height: 1.15; }
+.lead .hl { color: var(--yellow); }

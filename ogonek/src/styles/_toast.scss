@@ -1,0 +1,7 @@
+/* Подсказка-тост */
+.toast {
+  position: fixed; z-index: 20; left: 50%; bottom: calc(100px + var(--safe-b)); transform: translate(-50%, 20px);
+  background: var(--ink); color: var(--cream); padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 15px;
+  opacity: 0; pointer-events: none; transition: opacity .25s, transform .35s cubic-bezier(.3, 1.5, .5, 1); white-space: nowrap; max-width: 90vw; overflow: hidden; text-overflow: ellipsis;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }

@@ -27,7 +27,7 @@
 
 <p align="center"><img src="../docs/palette.png" alt="Палитра" width="100%"></p>
 
-Цвета, радиусы и шрифты заданы CSS-переменными в `src/styles.scss`:
+Цвета, радиусы и шрифты заданы CSS-переменными в `src/styles/_base.scss`:
 
 ```scss
 :root {
@@ -60,12 +60,22 @@
 ```
 src/app/
   app.routes.ts        маршруты (#/home, #/age/:ageId, #/age/:ageId/:typeId, #/game/:id, #/search, #/fav, #/my, #/new, #/edit/:id)
-  app.component.ts     оболочка: экран + нижнее меню + тост
+  app.component.ts     оболочка: экран + нижнее меню + тост + окно подтверждения
   store.service.ts     данные: встроенная база + свои игры/фильтры/избранное (signals + localStorage)
   seed.ts              встроенная база игр — сюда добавлять «официальные» игры
-  ui.ts                общие компоненты: <og-ogonek>, <og-top>, <og-game-item>, <og-rich-text>
+  models.ts            типы: возраст, вид активности, игра, эмоции Огонька
+  ui.ts                единая точка импорта общих компонентов и сервисов
+  shared/              по одному файлу на компонент или сервис:
+    ogonek.component.ts      <og-ogonek> — Огонёк
+    topbar.component.ts      <og-top> — шапка экрана
+    game-item.component.ts   <og-game-item> — строка игры в списке
+    rich-text.component.ts   <og-rich-text> — текст игры с разметкой
+    new-type.component.ts    <og-new-type> — поля «новый фильтр»
+    confirm.component.ts     <og-confirm> — окно подтверждения
+    confirm.service.ts, toast.service.ts, back.service.ts
   pages/               экраны: splash, home, age, games, game, search, fav, my, form
-src/styles.scss        стили и цвета бренда (:root)
+src/styles.scss        подключает разделы стилей по порядку
+src/styles/            _base (цвета бренда), _splash, _home, _lists, _game, _form, _my, _confirm, _animations…
 src/fonts/             шрифты (вшиваются в сборку)
 public/                иконки, манифест, Огонёк (img/ogonek/*.webp, 7 эмоций)
 ngsw-config.json       офлайн-кэш (Angular Service Worker)

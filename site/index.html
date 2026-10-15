@@ -26,7 +26,7 @@
         <a class="btn y" href="app/">Открыть приложение</a>
         <a class="btn r" id="apk" href="https://github.com/chipichapus-chipi-chapa/Ogonek-A-Collection-of-Games-for-Camp-Counselors/releases/download/android/ogonek.apk">Скачать для Android</a>
       </div>
-      <p class="small">APK для Android · на iPhone — через Safari, <a href="#iphone">как установить</a></p>
+      <p class="small">APK для Android · на iPhone — через Safari, <a href="#install" data-os-link="iphone">как установить</a></p>
     </div>
     <div class="hero-art" aria-hidden="true">
       <div class="k"></div>
@@ -38,17 +38,21 @@
 
 <section class="features">
   <div class="wrap">
-    <div class="feat"><b>57 игр</b><span>минутки, спортивные, свечки, на знакомство и сплочение, общелагерные мероприятия</span></div>
-    <div class="feat"><b>По возрасту</b><span>младшие 7–10, средние 11–13, старшие 14–17 — и по видам активности</span></div>
-    <div class="feat"><b>Без интернета</b><span>после установки всё работает в лагере, в автобусе и в лесу</span></div>
-    <div class="feat"><b>Своя копилка</b><span>избранное, свои игры и фильтры, копия в файл для другого вожатого</span></div>
+    <div class="feat"><b>57 игр</b><span>минутки, спортивные, свечки и общелагерные дела</span></div>
+    <div class="feat"><b>По возрасту</b><span>7–10, 11–13, 14–17 лет и по видам активности</span></div>
+    <div class="feat"><b>Без сети</b><span>работает в лагере, в автобусе и в лесу</span></div>
+    <div class="feat"><b>Копилка</b><span>избранное, свои игры и фильтры</span></div>
   </div>
 </section>
 
 <section class="install" id="install">
   <div class="wrap">
     <h2>Как <span class="hl">поставить</span></h2>
-    <div class="ways">
+    <div class="os-tabs" role="tablist" aria-label="Телефон">
+      <button role="tab" data-os="android" aria-selected="true">Android</button>
+      <button role="tab" data-os="iphone" aria-selected="false">iPhone</button>
+    </div>
+    <div class="ways" data-show="android">
       <article class="way" id="android">
         <img src="app/img/ogonek/star.webp" alt="">
         <h3>Android</h3>
@@ -106,19 +110,15 @@
   <div class="wrap">
     <img src="app/img/ogonek/love.webp" alt="">
     <p class="hand">Гореть самому — зажигать других</p>
-    <p class="links"><a href="brandbook/">Брендбук</a> · <a href="https://github.com/chipichapus-chipi-chapa/Ogonek-A-Collection-of-Games-for-Camp-Counselors">Исходный код</a> · Сделано для СПО «Маэстро»</p>
+    <p class="links"><a href="brandbook/">Брендбук</a><a href="https://github.com/chipichapus-chipi-chapa/Ogonek-A-Collection-of-Games-for-Camp-Counselors">Исходный код</a></p>
+    <p class="made">Сделано для СПО «Маэстро»</p>
   </div>
 </footer>
 
-<script>
-  // подсвечиваем инструкцию для своего телефона
-  const ua = navigator.userAgent;
-  const ios = /iPhone|iPad|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  const mine = ios ? 'iphone' : /Android/.test(ua) ? 'android' : null;
-  if (mine) {
-    document.getElementById(mine).classList.add('mine');
-    if (ios) document.getElementById('apk').classList.add('muted');
-  }
-</script>
+<div class="sticky-cta" id="sticky" aria-hidden="true">
+  <a class="btn r" id="sticky-btn" href="https://github.com/chipichapus-chipi-chapa/Ogonek-A-Collection-of-Games-for-Camp-Counselors/releases/download/android/ogonek.apk" tabindex="-1">Скачать для Android</a>
+</div>
+
+<script src="js/site.js"></script>
 </body>
 </html>

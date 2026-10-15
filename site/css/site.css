@@ -87,11 +87,81 @@ footer .hand { font-size: 24px; margin: 6px 0; }
 @keyframes float-in { from { opacity: 0; transform: translateY(120px) scale(.85) rotate(-8deg); } }
 @keyframes bob { 50% { transform: translateY(-10px) rotate(2deg); } }
 
+/* переключатель Android / iPhone — только на телефоне */
+.os-tabs { display: none; }
+.sticky-cta { display: none; }
+
+/* подвал: ссылки удобного размера */
+.links { display: flex; justify-content: center; flex-wrap: wrap; gap: 4px 8px; margin: 10px 0 0; }
+.links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 999px; text-decoration: none; background: rgba(243, 234, 215, .14); }
+.made { font-size: 13px; opacity: .75; margin: 8px 0 0; }
+summary { min-height: 28px; display: flex; align-items: center; }
+
+/* ─── Телефон ─── */
 @media (max-width: 720px) {
-  .hero { padding-top: 28px; }
-  .hero .wrap { grid-template-columns: minmax(0, 1fr); }
-  .hero-art { order: -1; min-height: 240px; }
-  .hero-art .og { width: 200px; }
-  .cta .btn { flex: 1 1 100%; }
+  .wrap { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+
+  /* первый экран: рисунок сверху, всё по центру, кнопки на всю ширину */
+  .hero { padding: calc(18px + env(safe-area-inset-top)) 0 30px; text-align: center; }
+  .hero .wrap { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+  .hero-art { order: -1; min-height: 0; height: 210px; margin: 6px auto 0; width: 230px; }
+  .hero-art .k { width: 170px; top: 26px; }
+  .hero-art .star { width: 132px; right: -6px; top: 0; }
+  .hero-art .og { width: 172px; margin-top: 14px; }
+  .kicker { font-size: 15px; letter-spacing: .1em; }
+  .hero h1 { font-size: clamp(64px, 21vw, 92px); margin-top: 6px; }
+  .sub { font-size: 21px; margin: 6px auto 18px; max-width: 320px; }
+  .cta { flex-direction: column; gap: 12px; }
+  .cta .btn { width: 100%; font-size: 24px; }
+  .small { font-size: 13.5px; }
+  .small a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 4px; }
+
+  /* что внутри — плитка 2×2 */
+  .features { padding: 22px 0 4px; }
+  .features .wrap { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .feat { padding: 14px 14px 15px; border-radius: 18px; }
+  .feat b { font-size: 23px; }
+  .feat span { font-size: 13.5px; line-height: 1.35; margin-top: 4px; }
+
+  section h2 { font-size: 44px; margin-bottom: 14px; }
+
+  /* установка: одна инструкция, переключатель сверху */
+  .install { padding: 26px 0; }
+  .os-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; margin-bottom: 30px; border-radius: 999px; background: var(--cream); }
+  .os-tabs button { min-height: 46px; border: 0; border-radius: 999px; background: none; font: 800 16px var(--f-body); color: var(--ink-soft); cursor: pointer; }
+  .os-tabs button[aria-selected="true"] { background: var(--olive); color: var(--cream); box-shadow: 0 3px 10px rgba(44, 42, 34, .18); }
+  .ways[data-show="android"] #iphone, .ways[data-show="iphone"] #android { display: none; }
+  .way { padding: 20px 16px 18px; animation: way-in .3s ease both; }
+  .way.mine::after { top: -12px; left: 16px; }
+  .way img { width: 72px; top: -30px; right: 8px; }
+  .way h3 { font-size: 34px; }
+  .way ol { padding-left: 20px; font-size: 15.5px; }
+
+  /* экраны — листаются пальцем по одному */
+  .screens { padding: 4px 0 22px; }
+  .phones { gap: 12px; margin: 0 calc(-1 * max(16px, env(safe-area-inset-left))); padding: 6px max(16px, env(safe-area-inset-left)) 18px; scroll-snap-type: x mandatory; scroll-padding: 0 16px; }
+  .phones img { width: 62vw; max-width: 250px; border-radius: 26px; scroll-snap-align: center; }
+
+  .faq { padding: 4px 0 30px; }
+  summary { min-height: 44px; font-size: 16px; }
+  details { padding: 8px 16px; }
+
+  /* закреплённая кнопка внизу */
+  .sticky-cta {
+    display: block; position: fixed; z-index: 20; left: 0; right: 0; bottom: 0;
+    padding: 12px max(16px, env(safe-area-inset-left)) calc(12px + env(safe-area-inset-bottom));
+    background: linear-gradient(rgba(251, 246, 234, 0), var(--paper) 30%);
+    transform: translateY(110%); transition: transform .3s cubic-bezier(.2, .9, .3, 1.1); pointer-events: none;
+  }
+  .sticky-cta.show { transform: none; pointer-events: auto; }
+  .sticky-cta .btn { width: 100%; font-size: 24px; }
+  footer { padding-bottom: calc(110px + env(safe-area-inset-bottom)); }
+}
+@keyframes way-in { from { opacity: 0; transform: translateY(10px); } }
+
+/* совсем узкие телефоны */
+@media (max-width: 350px) {
+  .features .wrap { grid-template-columns: 1fr; }
+  .cta .btn, .sticky-cta .btn { font-size: 21px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }

@@ -2,7 +2,7 @@ import { Seed } from './models';
 
 export const SEED: Seed = {
   ages: [
-    { id: 'junior', title: 'Младший возраст', sub: '7–10 лет', mood: 'smile', color: 'yellow' },
+    { id: 'junior', title: 'Младший возраст', sub: '7–10 лет', mood: 'star', color: 'yellow' },
     { id: 'middle', title: 'Средний возраст', sub: '11–13 лет', mood: 'wink', color: 'olive' },
     { id: 'senior', title: 'Старший возраст', sub: '14–17 лет', mood: 'cool', color: 'red' },
     { id: 'camp', title: 'Общелагерные мероприятия', sub: 'для всего лагеря', mood: 'love', color: 'kraft' }

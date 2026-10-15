@@ -38,7 +38,7 @@
   .grid { display: grid; gap: 16px; }
   .g2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
   .g3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-  .g6 { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+  .g6 { grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); }
   .card { background: var(--cream); border-radius: 22px; padding: 20px; }
 
   .moods .card { text-align: center; padding: 14px 10px 16px; }
@@ -106,15 +106,15 @@
   <div class="wrap">
     <div class="num">01</div>
     <h2>Маскот — Огонёк</h2>
-    <p class="intro">Синяя мордашка с волосами-пламенем. Это вожатский дух: «гореть самому и зажигать других». У Огонька есть 6 эмоций. Каждая отвечает за свою ситуацию в приложении. Он нарисован с лёгкой «карандашной» неровностью, как на постах.</p>
+    <p class="intro">Синяя мордашка с волосами-пламенем. Это вожатский дух: «гореть самому и зажигать других». Огонёк нарисован от руки, мелками, как на постах ком.состава. У него 7 эмоций, и каждая отвечает за свою ситуацию в приложении.</p>
     <div class="grid g6 moods">
       <script>
-        [['smile','Улыбка','Главная, статьи'],['wink','Подмигивает','Заставка, советы вожатому'],['love','Влюблён','Избранное, общелагерные'],
-         ['cool','В очках','Старшие, «Мои статьи»'],['wow','Удивлён','Ничего не нашлось, ошибка'],['sleepy','Спит','Пустой раздел']]
+        [['star','Звёздочки','Главная, младшие, статьи'],['wink','Подмигивает','Заставка, советы вожатому'],['love','Влюблён','Избранное, общелагерные'],
+         ['cool','В очках','Старший возраст'],['wow','Удивлён','Ничего не нашлось, ошибка'],['sleepy','Спит','Пустой раздел'],['point','Показывает','«Мои статьи»: подсказка, что делать']]
         .forEach(([m,t,s]) => document.write(`<div class="card">${ogonek(m,130)}<b>${t}</b><span>${s}</span></div>`));
       </script>
     </div>
-    <p class="intro" style="margin-top:20px">Исходники в векторе лежат в <code>app/img/ogonek-*.svg</code>, иконка приложения — <code>app/img/icon-512.png</code>.</p>
+    <p class="intro" style="margin-top:20px">Рисунки лежат в <code>app/img/ogonek/*.webp</code> и <code>docs/mascot/*.png</code>, иконка приложения — <code>app/img/icon-512.png</code>.</p>
   </div>
 </section>
 

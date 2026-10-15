@@ -2,22 +2,17 @@
 import { Component, Injectable, computed, inject, input, signal } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { DomSanitizer } from '@angular/platform-browser';
-import { ogonekSvg } from './mascot';
 import { Game, Mood } from './models';
 import { StoreService } from './store.service';
 
 @Component({
   selector: 'og-ogonek',
-  template: `<span class="og-wrap" [innerHTML]="svg()"></span>`,
-  styles: [':host{display:inline-flex;flex:none} .og-wrap{display:contents}']
+  template: `<img class="ogonek" [src]="'img/ogonek/' + mood() + '.webp'" [width]="size()" [height]="size()" alt="" draggable="false">`,
+  styles: [':host{display:inline-flex;flex:none} img{display:block;object-fit:contain;user-select:none}']
 })
 export class OgonekComponent {
-  mood = input<Mood>('smile');
+  mood = input<Mood>('star');
   size = input(120);
-  private san = inject(DomSanitizer);
-  // SVG собираем сами из констант — пользовательского ввода там нет
-  svg = computed(() => this.san.bypassSecurityTrustHtml(ogonekSvg(this.mood(), this.size())));
 }
 
 /** Назад по истории (как системная кнопка телефона); если истории нет — на запасной экран. */

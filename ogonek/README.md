@@ -11,7 +11,7 @@
 
 <p align="center"><img src="../docs/screens.png" alt="Экраны приложения" width="100%"></p>
 
-## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> Суть проекта
+## <img src="../docs/mascot/ogonek-wink.png" width="36" align="absmiddle"> Суть проекта
 
 Вожатому в лагере постоянно нужна подходящая игра: пока отряд ждёт столовую, на вечерней свечке, на спортивной площадке, на общелагерном деле. Обычно такие игры хранятся в тетрадках, распечатках и чатах. «Огонёк» собирает их в одном месте, в телефоне, и работает **без интернета**: в лагере связь часто плохая.
 
@@ -23,7 +23,7 @@
 
 Технически это PWA на Angular 19: приложение ставится на главный экран телефона, а системная кнопка «назад» возвращает на предыдущий экран.
 
-## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Стилистика в коде
+## <img src="../docs/mascot/ogonek-love.png" width="36" align="absmiddle"> Стилистика в коде
 
 <p align="center"><img src="../docs/palette.png" alt="Палитра" width="100%"></p>
 
@@ -41,20 +41,21 @@
 }
 ```
 
-Огонёк — компонент `<og-ogonek mood="wink" [size]="96" />` (`src/app/ui.ts`). Сам рисунок собирается в SVG в `src/app/mascot.ts`.
+Огонёк — компонент `<og-ogonek mood="wink" [size]="96" />` (`src/app/ui.ts`). Рисунки лежат в `public/img/ogonek/<mood>.webp`: чтобы добавить эмоцию, положите туда файл и допишите имя в тип `Mood` (`src/app/models.ts`).
 
 <p align="center"><img src="../docs/mascot.png" alt="Эмоции Огонька" width="100%"></p>
 
 | `mood` | | Где используется |
 |---|:---:|---|
-| `smile` | <img src="../docs/mascot/ogonek-smile.svg" width="40"> | главная, статьи |
-| `wink` | <img src="../docs/mascot/ogonek-wink.svg" width="40"> | заставка, советы вожатому |
-| `love` | <img src="../docs/mascot/ogonek-love.svg" width="40"> | избранное, общелагерные |
-| `cool` | <img src="../docs/mascot/ogonek-cool.svg" width="40"> | старший возраст, «Мои статьи» |
-| `wow` | <img src="../docs/mascot/ogonek-wow.svg" width="40"> | ничего не нашлось, ошибка |
-| `sleepy` | <img src="../docs/mascot/ogonek-sleepy.svg" width="40"> | пустой раздел |
+| `star` | <img src="../docs/mascot/ogonek-star.png" width="40"> | главная, статьи |
+| `wink` | <img src="../docs/mascot/ogonek-wink.png" width="40"> | заставка, советы вожатому |
+| `love` | <img src="../docs/mascot/ogonek-love.png" width="40"> | избранное, общелагерные |
+| `cool` | <img src="../docs/mascot/ogonek-cool.png" width="40"> | старший возраст |
+| `wow` | <img src="../docs/mascot/ogonek-wow.png" width="40"> | ничего не нашлось, ошибка |
+| `sleepy` | <img src="../docs/mascot/ogonek-sleepy.png" width="40"> | пустой раздел |
+| `point` | <img src="../docs/mascot/ogonek-point.png" width="40"> | «Мои статьи»: подсказка, что делать |
 
-## <img src="../docs/mascot/ogonek-cool.svg" width="36" align="absmiddle"> Структура
+## <img src="../docs/mascot/ogonek-cool.png" width="36" align="absmiddle"> Структура
 
 ```
 src/app/
@@ -62,23 +63,22 @@ src/app/
   app.component.ts     оболочка: экран + нижнее меню + тост
   store.service.ts     данные: встроенная база + свои статьи/фильтры/избранное (signals + localStorage)
   seed.ts              встроенная база игр — сюда добавлять «официальные» игры
-  mascot.ts            Огонёк в SVG (6 эмоций)
   ui.ts                общие компоненты: <og-ogonek>, <og-top>, <og-game-item>, <og-rich-text>
   pages/               экраны: splash, home, age, games, game, search, fav, my, form
 src/styles.scss        стили и цвета бренда (:root)
 src/fonts/             шрифты (вшиваются в сборку)
-public/                иконки, манифест, Огонёк в SVG
+public/                иконки, манифест, Огонёк (img/ogonek/*.webp, 7 эмоций)
 ngsw-config.json       офлайн-кэш (Angular Service Worker)
 ```
 
-## <img src="../docs/mascot/ogonek-smile.svg" width="36" align="absmiddle"> Запуск
+## <img src="../docs/mascot/ogonek-star.png" width="36" align="absmiddle"> Запуск
 
 ```bash
 npm install
 npm start                # разработка на компьютере: http://localhost:4200
 ```
 
-## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> Открыть на телефоне
+## <img src="../docs/mascot/ogonek-wink.png" width="36" align="absmiddle"> Открыть на телефоне
 
 Телефон и компьютер должны быть в одной Wi-Fi сети.
 
@@ -91,7 +91,7 @@ npm run phone:prod       # сборка + сервер на http://<IP-комп�
 
 > По локальному адресу (http) приложение открывается, но браузер не включает офлайн-режим и установку: для этого нужен HTTPS.
 
-## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Установить на телефоны насовсем
+## <img src="../docs/mascot/ogonek-love.png" width="36" align="absmiddle"> Установить на телефоны насовсем
 
 1. `npx ng build` → папка `dist/ogonek/browser`.
 2. Выложи её на любой HTTPS-хостинг, например перетащи на https://app.netlify.com/drop.
@@ -102,7 +102,7 @@ npm run phone:prod       # сборка + сервер на http://<IP-комп�
 
 APK можно получить через https://www.pwabuilder.com по ссылке из шага 2.
 
-## <img src="../docs/mascot/ogonek-wow.svg" width="36" align="absmiddle"> Разметка текста статьи
+## <img src="../docs/mascot/ogonek-wow.png" width="36" align="absmiddle"> Разметка текста статьи
 
 ```
 ## Подзаголовок
@@ -114,6 +114,6 @@ APK можно получить через https://www.pwabuilder.com по сс�
 ---
 
 <p align="center">
-  <img src="../docs/mascot/ogonek-smile.svg" width="64"><br>
+  <img src="../docs/mascot/ogonek-star.png" width="64"><br>
   <i>СПО «Маэстро» · гореть самому — зажигать других</i>
 </p>

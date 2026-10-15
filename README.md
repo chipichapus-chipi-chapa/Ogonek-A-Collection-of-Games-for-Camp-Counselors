@@ -22,7 +22,7 @@
 
 ---
 
-## <img src="docs/mascot/ogonek-wink.svg" width="40" align="absmiddle"> Суть проекта
+## <img src="docs/mascot/ogonek-wink.png" width="40" align="absmiddle"> Суть проекта
 
 Вожатому в лагере постоянно нужна подходящая игра: пока отряд ждёт столовую, на вечерней свечке, на спортивной площадке, на общелагерном деле. Обычно такие игры хранятся в тетрадках, распечатках и чатах.
 
@@ -46,26 +46,27 @@
 
 ---
 
-## <img src="docs/mascot/ogonek-love.svg" width="40" align="absmiddle"> Стилистика
+## <img src="docs/mascot/ogonek-love.png" width="40" align="absmiddle"> Стилистика
 
 Фирменный стиль взят с постов отряда «Выборы ком.состава 2026–2027»: бумажный коллаж, зернистый фон, повёрнутый лист крафта, красная звезда-взрыв и фото в кремовой рамке. Структура экранов — крупные скруглённые карточки и кнопки-«таблетки».
 
 ### Маскот — Огонёк
 
-Синяя мордашка с волосами-пламенем — вожатский дух: **«гореть самому — зажигать других»**. Нарисован с лёгкой «карандашной» неровностью, как на постах. У Огонька шесть эмоций, и каждая отвечает за свою ситуацию в приложении:
+Синяя мордашка с волосами-пламенем — вожатский дух: **«гореть самому — зажигать других»**. Нарисован от руки мелками, как на постах ком.состава. У Огонька семь эмоций, и каждая отвечает за свою ситуацию в приложении:
 
-<p align="center"><img src="docs/mascot.png" alt="Шесть эмоций Огонька" width="100%"></p>
+<p align="center"><img src="docs/mascot.png" alt="Семь эмоций Огонька" width="100%"></p>
 
 | | Эмоция | Где появляется |
 |:---:|---|---|
-| <img src="docs/mascot/ogonek-smile.svg" width="48"> | Улыбка | главная, статьи |
-| <img src="docs/mascot/ogonek-wink.svg" width="48"> | Подмигивает | заставка, советы вожатому |
-| <img src="docs/mascot/ogonek-love.svg" width="48"> | Влюблён | избранное, общелагерные |
-| <img src="docs/mascot/ogonek-cool.svg" width="48"> | В очках | старший возраст, «Мои статьи» |
-| <img src="docs/mascot/ogonek-wow.svg" width="48"> | Удивлён | ничего не нашлось |
-| <img src="docs/mascot/ogonek-sleepy.svg" width="48"> | Спит | пустой раздел |
+| <img src="docs/mascot/ogonek-star.png" width="48"> | Звёздочки | главная, младшие, статьи |
+| <img src="docs/mascot/ogonek-wink.png" width="48"> | Подмигивает | заставка, советы вожатому |
+| <img src="docs/mascot/ogonek-love.png" width="48"> | Влюблён | избранное, общелагерные |
+| <img src="docs/mascot/ogonek-cool.png" width="48"> | В очках | старший возраст |
+| <img src="docs/mascot/ogonek-wow.png" width="48"> | Удивлён | ничего не нашлось |
+| <img src="docs/mascot/ogonek-sleepy.png" width="48"> | Спит | пустой раздел |
+| <img src="docs/mascot/ogonek-point.png" width="48"> | Показывает | «Мои статьи»: подсказка, что делать |
 
-Векторные файлы: [`docs/mascot/`](docs/mascot/).
+Рисунки: [`docs/mascot/`](docs/mascot/).
 
 ### Цвета
 
@@ -106,11 +107,11 @@
 
 ---
 
-## <img src="docs/mascot/ogonek-smile.svg" width="40" align="absmiddle"> Установка на телефон
+## <img src="docs/mascot/ogonek-star.png" width="40" align="absmiddle"> Установка на телефон
 
 Пошаговая инструкция для вожатых и для того, кто выкладывает приложение: **[INSTALL.md](INSTALL.md)**.
 
-## <img src="docs/mascot/ogonek-cool.svg" width="40" align="absmiddle"> Что в репозитории
+## <img src="docs/mascot/ogonek-cool.png" width="40" align="absmiddle"> Что в репозитории
 
 | Папка / файл | Что это |
 |---|---|
@@ -119,7 +120,7 @@
 | [`docs/`](docs/) | Картинки для README и Огонёк в SVG |
 | [`app/`](app/) | Первая версия на чистом HTML/JS (прототип). Брендбук берёт из неё шрифты, Огонька и живые экраны |
 
-## <img src="docs/mascot/ogonek-wow.svg" width="40" align="absmiddle"> Быстрый старт
+## <img src="docs/mascot/ogonek-wow.png" width="40" align="absmiddle"> Быстрый старт
 
 ```bash
 cd ogonek
@@ -141,6 +142,6 @@ npm run phone:prod
 ---
 
 <p align="center">
-  <img src="docs/mascot/ogonek-sleepy.svg" width="64"><br>
+  <img src="docs/mascot/ogonek-sleepy.png" width="64"><br>
   <i>Сделано для СПО «Маэстро» · гореть самому — зажигать других</i>
 </p>

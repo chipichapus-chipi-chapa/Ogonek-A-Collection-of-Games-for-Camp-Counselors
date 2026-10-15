@@ -199,7 +199,7 @@
         })}
         <article class="sheet">
           <div class="sheet-head">
-            ${ogonek(fav ? 'love' : 'smile', 70)}
+            ${ogonek(fav ? 'love' : 'star', 70)}
             <h2>${esc(g.title)}</h2>
             <div class="chips">${ages}${t && g.type !== 'camp' ? `<span class="chip">${esc(t.icon || '')} ${esc(t.title)}</span>` : ''}${mine ? '<span class="chip">✎ моя статья</span>' : ''}</div>
           </div>
@@ -248,7 +248,7 @@
         ${topbar('Мои <span class="hl">статьи</span>', { noBack: true })}
         ${games.length
           ? `<div class="list">${games.map(gameItem).join('')}</div>`
-          : `<div class="empty">${ogonek('cool', 110)}<p>Знаешь классную игру? Запиши её — и она всегда будет с тобой, даже без интернета.</p></div>`}
+          : `<div class="empty">${ogonek('point', 130)}<p>Знаешь классную игру? Запиши её — и она всегда будет с тобой, даже без интернета.</p></div>`}
         <div class="pad" style="margin-top:14px"><a class="btn block" href="#/new">+ Новая статья</a></div>
 
         <div class="section-title">Мои <span class="hl">фильтры</span></div>

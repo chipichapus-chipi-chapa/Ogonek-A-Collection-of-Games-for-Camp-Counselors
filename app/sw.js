@@ -1,9 +1,10 @@
 /* Офлайн-кэш: при первом открытии всё приложение сохраняется на телефон. */
-const VERSION = 'ogonek-v1';
+const VERSION = 'ogonek-v2';
 const FILES = [
   './', './index.html', './manifest.json', './css/app.css', './js/app.js', './js/data.js', './js/mascot.js',
   './fonts/fonts.css', './fonts/Neucha-cyrillic-0.woff2','./fonts/Neucha-latin-1.woff2','./fonts/Nunito-cyrillic-2.woff2','./fonts/Nunito-latin-3.woff2','./fonts/YanoneKaffeesatz-cyrillic-4.woff2','./fonts/YanoneKaffeesatz-latin-5.woff2',
-  './img/icon-192.png', './img/icon-512.png'
+  './img/icon-192.png', './img/icon-512.png',
+  './img/ogonek/star.webp','./img/ogonek/wink.webp','./img/ogonek/love.webp','./img/ogonek/cool.webp','./img/ogonek/wow.webp','./img/ogonek/sleepy.webp','./img/ogonek/point.webp'
 ];
 self.addEventListener('install', e => e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES)).then(() => self.skipWaiting())));
 self.addEventListener('activate', e => e.waitUntil(

@@ -14,7 +14,7 @@
 
 ---
 
-## <img src="docs/mascot/ogonek-wow.svg" width="40" align="absmiddle"> Часть 1. Быстрая проверка с компьютера
+## <img src="docs/mascot/ogonek-wow.png" width="40" align="absmiddle"> Часть 1. Быстрая проверка с компьютера
 
 Подходит, чтобы показать приложение. Работает, только пока компьютер включён, и телефон должен быть в той же Wi-Fi сети.
 
@@ -40,7 +40,7 @@
 
 ---
 
-## <img src="docs/mascot/ogonek-cool.svg" width="40" align="absmiddle"> Часть 2. Получить постоянную ссылку (один раз)
+## <img src="docs/mascot/ogonek-cool.png" width="40" align="absmiddle"> Часть 2. Получить постоянную ссылку (один раз)
 
 Приложение нужно выложить на сайт с HTTPS. Это бесплатно.
 
@@ -80,7 +80,7 @@
 
 ---
 
-## <img src="docs/mascot/ogonek-love.svg" width="40" align="absmiddle"> Часть 3. Установка на телефон (для вожатых)
+## <img src="docs/mascot/ogonek-love.png" width="40" align="absmiddle"> Часть 3. Установка на телефон (для вожатых)
 
 Перешлите вожатым ссылку из части 2. Устанавливать нужно **один раз, при интернете**.
 
@@ -110,7 +110,7 @@
 
 ---
 
-## <img src="docs/mascot/ogonek-smile.svg" width="40" align="absmiddle"> Как пользоваться
+## <img src="docs/mascot/ogonek-star.png" width="40" align="absmiddle"> Как пользоваться
 
 <p align="center"><img src="docs/screens.png" alt="Экраны приложения" width="100%"></p>
 
@@ -132,7 +132,7 @@
 
 ---
 
-## <img src="docs/mascot/ogonek-sleepy.svg" width="40" align="absmiddle"> Частые вопросы
+## <img src="docs/mascot/ogonek-sleepy.png" width="40" align="absmiddle"> Частые вопросы
 
 **Нет пункта «Установить приложение».**
 Откройте ссылку именно в Chrome (на Android) или Safari (на iPhone), дождитесь полной загрузки и обновите страницу. Ссылка должна начинаться с `https://`.
@@ -146,6 +146,6 @@
 ---
 
 <p align="center">
-  <img src="docs/mascot/ogonek-wink.svg" width="64"><br>
+  <img src="docs/mascot/ogonek-wink.png" width="64"><br>
   <i>СПО «Маэстро» · гореть самому — зажигать других</i>
 </p>

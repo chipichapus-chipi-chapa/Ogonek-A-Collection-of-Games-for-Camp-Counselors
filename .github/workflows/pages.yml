@@ -30,7 +30,8 @@ jobs:
         working-directory: ogonek
         run: |
           npm ci
-          npx ng build
+          # полный путь нужен офлайн-кэшу (service worker): сайт лежит не в корне, а в /<репозиторий>/app/
+          npx ng build --base-href "/${{ github.event.repository.name }}/app/"
       - name: Сборка сайта
         run: |
           mkdir -p _site/ogonek/public _site/ogonek/src

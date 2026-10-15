@@ -20,7 +20,7 @@ import { OgonekComponent, TopbarComponent } from '../ui';
       </div>
       <div class="quick">
         <a routerLink="/fav"><span class="ic">♥</span>Избранное<br>({{ store.fav().length }})</a>
-        <a routerLink="/my"><span class="ic">✎</span>Мои статьи<br>({{ store.myGames().length }})</a>
+        <a routerLink="/my"><span class="ic">✎</span>Мои игры<br>({{ store.myGames().length }})</a>
       </div>
     </div>`
 })

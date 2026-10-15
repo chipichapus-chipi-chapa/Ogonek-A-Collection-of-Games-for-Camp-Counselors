@@ -1,4 +1,4 @@
-/* Общие маленькие компоненты: Огонёк, шапка, строка игры, текст статьи, тост. */
+/* Общие маленькие компоненты: Огонёк, шапка, строка игры в списке, текст игры, тост. */
 import { Component, ElementRef, Injectable, computed, effect, inject, input, output, signal, viewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
@@ -81,7 +81,7 @@ type Block =
   | { k: 'tip'; html: string }
   | { k: 'ul'; items: string[] };
 
-/** Мини-разметка статьи: ## заголовок, - пункт, > совет, **жирный** */
+/** Мини-разметка текста игры: ## заголовок, - пункт, > совет, **жирный** */
 @Component({
   selector: 'og-rich-text',
   imports: [OgonekComponent],

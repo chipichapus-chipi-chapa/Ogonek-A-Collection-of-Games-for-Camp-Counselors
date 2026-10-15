@@ -52,11 +52,14 @@ export class StoreService {
     return t;
   }
 
-  /** Возвращает число статей, если фильтр занят, иначе удаляет. */
-  deleteType(id: string): number {
-    const used = this.state().games.filter(g => g.type === id).length;
-    if (!used) this.update(s => ({ ...s, types: s.types.filter(t => t.id !== id) }));
-    return used;
+  /** Сколько своих статей использует фильтр. */
+  typeUsage(id: string) {
+    return this.state().games.filter(g => g.type === id).length;
+  }
+
+  /** Удаляет фильтр, если он не используется. */
+  deleteType(id: string) {
+    if (!this.typeUsage(id)) this.update(s => ({ ...s, types: s.types.filter(t => t.id !== id) }));
   }
 
   exportJson() {
@@ -69,8 +72,16 @@ export class StoreService {
     let added = 0;
     this.update(s => {
       const types = [...s.types];
-      (data.types || []).forEach((t: ActivityType) => { if (!types.some(x => x.id === t.id)) types.push(t); });
-      const fresh = (data.games || []).filter((g: Game) => !s.games.some(x => x.id === g.id));
+      // фильтр с тем же названием (свой или встроенный) не дублируем — статьи переезжают в него
+      const remap = new Map<string, string>();
+      (data.types || []).forEach((t: ActivityType) => {
+        const same = [...SEED.types, ...types].find(x => x.id === t.id || x.title.toLowerCase() === t.title.toLowerCase());
+        if (same) remap.set(t.id, same.id);
+        else types.push(t);
+      });
+      const fresh = (data.games || [])
+        .filter((g: Game) => !s.games.some(x => x.id === g.id))
+        .map((g: Game) => ({ ...g, type: remap.get(g.type) ?? g.type }));
       added = fresh.length;
       return { types, games: [...s.games, ...fresh], fav: Array.from(new Set([...s.fav, ...(data.fav || [])])) };
     });

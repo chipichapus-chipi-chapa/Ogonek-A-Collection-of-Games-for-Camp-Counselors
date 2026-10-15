@@ -119,7 +119,8 @@ Send counselors the link from Part 2. Installation is needed **once, with intern
 - **Let's go!** («Поехали!») on the splash screen → choose an age group or camp-wide events («Общелагерные мероприятия»).
 - Age group → **activity type** (minute games, sports, evening circles…) → **game**.
 - **Add to favorites** («♡ В избранное») — the game appears in the Favorites tab («Избранное»).
-- **＋ Create** («Создать», the red button at the bottom) — write your own article. You can also add **your own filter** (activity type).
+- **＋ Create** («Создать», the red button at the bottom) — write your own article. You can add **your own filter** (activity type) right in the form.
+- **My** («Мои») — "My collection" («Моя копилка») with tabs: your **articles** («Статьи»), your **filters** («Фильтры», you can create and delete them here too) and **backup** («Копия»).
 - **Search** («Поиск») — by title and text, with filters by age group and activity type.
 - The phone's **back** button returns to the previous screen.
 
@@ -127,8 +128,8 @@ Send counselors the link from Part 2. Installation is needed **once, with intern
 
 Your articles, filters and favorites are stored **only on this phone**. To keep them safe or share them with another counselor:
 
-- **My** («Мои») → **Save to file** («Сохранить в файл») — downloads a file with your articles;
-- on the other phone: **My** («Мои») → **Load from file** («Загрузить из файла») and pick that file (for example, from Telegram or a cloud drive).
+- **My** («Мои») → **Backup** tab («Копия») → **Save to file** («Сохранить в файл») — downloads a file with your articles and filters;
+- on the other phone: **My** («Мои») → **Backup** («Копия») → **Load from file** («Загрузить из файла») and pick that file (for example, from Telegram or a cloud drive). Filters with the same name are merged, no duplicates.
 
 If you delete the app or clear the browser data, your articles are lost. Save the file from time to time.
 
@@ -143,7 +144,7 @@ Open the link in Chrome (Android) or Safari (iPhone), wait for it to load fully,
 Open the app while online, close it and open it again: updates are downloaded in the background.
 
 **My articles disappeared.**
-Most likely the browser data was cleared or the app was reinstalled. They can only be restored from a backup file (**My** → **Load from file**).
+Most likely the browser data was cleared or the app was reinstalled. They can only be restored from a backup file (**My** → **Backup** → **Load from file**).
 
 ---
 

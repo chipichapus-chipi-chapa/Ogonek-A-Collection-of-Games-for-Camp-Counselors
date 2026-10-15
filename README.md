@@ -66,7 +66,7 @@ A blue face with flaming hair — the counselor spirit: **"burn yourself — lig
 | <img src="docs/mascot/ogonek-cool.png" width="48"> | Cool | senior age group |
 | <img src="docs/mascot/ogonek-wow.png" width="48"> | Surprised | nothing found |
 | <img src="docs/mascot/ogonek-sleepy.png" width="48"> | Sleepy | empty section |
-| <img src="docs/mascot/ogonek-point.png" width="48"> | Pointing | "My articles": a hint on what to do |
+| <img src="docs/mascot/ogonek-point.png" width="48"> | Pointing | empty "My collection": a hint on what to do |
 
 Drawings: [`docs/mascot/`](docs/mascot/).
 

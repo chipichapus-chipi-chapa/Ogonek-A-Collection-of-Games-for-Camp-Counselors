@@ -7,6 +7,7 @@ import { GameItemComponent, OgonekComponent, TopbarComponent } from '../ui';
   selector: 'og-games',
   imports: [RouterLink, TopbarComponent, GameItemComponent, OgonekComponent],
   template: `
+    @if (age() && type() && ageId() !== 'camp') {
     <div class="screen">
       <og-top [title]="type()?.title || 'Игры'" [fallback]="'/age/' + ageId()" />
       <p class="lead pad">{{ age()?.title }} · <span class="hl">{{ list().length }} {{ word() }}</span></p>
@@ -20,7 +21,11 @@ import { GameItemComponent, OgonekComponent, TopbarComponent } from '../ui';
       <div class="pad mt">
         <a class="btn ghost block" routerLink="/new" [queryParams]="{ age: ageId(), type: typeId() }">+ Добавить сюда игру</a>
       </div>
-    </div>`
+    </div>
+    } @else {
+      <div class="screen"><og-top title="Упс" />
+        <div class="empty"><og-ogonek mood="wow" [size]="120" /><p>Такой страницы нет — может, фильтр удалили?</p><a class="btn yellow" routerLink="/home">На главную</a></div></div>
+    }`
 })
 export class GamesPage {
   ageId = input.required<string>();

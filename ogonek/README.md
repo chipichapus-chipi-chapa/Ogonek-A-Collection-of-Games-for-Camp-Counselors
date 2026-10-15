@@ -55,7 +55,7 @@ Ogonek is the `<og-ogonek mood="wink" [size]="96" />` component (`src/app/ui.ts`
 | `cool` | <img src="../docs/mascot/ogonek-cool.png" width="40"> | senior age group |
 | `wow` | <img src="../docs/mascot/ogonek-wow.png" width="40"> | nothing found, error |
 | `sleepy` | <img src="../docs/mascot/ogonek-sleepy.png" width="40"> | empty section |
-| `point` | <img src="../docs/mascot/ogonek-point.png" width="40"> | "My articles": a hint on what to do |
+| `point` | <img src="../docs/mascot/ogonek-point.png" width="40"> | empty "My collection": a hint on what to do |
 
 ## <img src="../docs/mascot/ogonek-cool.png" width="36" align="absmiddle"> Structure
 

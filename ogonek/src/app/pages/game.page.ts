@@ -23,7 +23,7 @@ import { BackService, ConfirmService, OgonekComponent, RichTextComponent, ToastS
         </og-top>
         <article class="sheet">
           <div class="sheet-head">
-            <og-ogonek class="corner" [mood]="fav() ? 'love' : 'star'" [size]="70" />
+            @for (m of [fav() ? 'love' : 'star']; track m) { <og-ogonek class="corner" [mood]="$any(m)" [size]="70" /> }
             <h2>{{ g.title }}</h2>
             <div class="chips">
               @for (a of g.ages; track a) { <span class="chip age">{{ store.age(a)?.title || a }}</span> }

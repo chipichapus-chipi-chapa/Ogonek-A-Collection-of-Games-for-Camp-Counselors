@@ -14,7 +14,7 @@ import { ConfirmComponent, ToastService } from './ui';
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg><span>Игры</span></a>
         <a routerLink="/search" [class.on]="t === 'search'">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Поиск</span></a>
-        <a routerLink="/new" class="plus" aria-label="Новая статья">
+        <a routerLink="/new" class="plus" aria-label="Новая игра">
           <span class="pl"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></span><em>Создать</em></a>
         <a routerLink="/fav" [class.on]="t === 'fav'">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"><path d="M12 20s-7.5-4.6-9.3-9.2C1.6 7.8 3.6 4.5 7 4.5c2.1 0 3.6 1.3 5 3 1.4-1.7 2.9-3 5-3 3.4 0 5.4 3.3 4.3 6.3C19.5 15.4 12 20 12 20z"/></svg><span>Избранное</span></a>

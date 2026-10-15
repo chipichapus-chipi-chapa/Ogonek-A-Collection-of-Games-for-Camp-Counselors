@@ -1,152 +1,154 @@
 <p align="center">
-  <img src="docs/banner-install.png" alt="Огонёк в телефоне" width="100%">
+  <img src="docs/en/banner-install.png" alt="Ogonek on your phone" width="100%">
 </p>
 
-<h1 align="center">Как поставить «Огонёк» на телефон</h1>
+<h1 align="center">How to Install Ogonek on a Phone</h1>
 
-<p align="center"><i>Поставить один раз — играть всю смену, даже без интернета.</i></p>
+<p align="center"><i>Install once — play all session long, even without internet.</i></p>
 
-Инструкция из трёх частей:
+> The app interface is in Russian. Button names are given here in English with the original Russian label in quotes, so you can find them on screen.
 
-- **Часть 1** — быстро посмотреть приложение на телефоне с компьютера (для проверки).
-- **Часть 2** — один раз выложить приложение в интернет, чтобы получить постоянную ссылку (делает один человек).
-- **Часть 3** — установка на телефон по ссылке (делает каждый вожатый).
+This guide has three parts:
+
+- **Part 1** — quickly open the app on a phone from your computer (for testing).
+- **Part 2** — publish the app once to get a permanent link (done by one person).
+- **Part 3** — install the app on a phone from that link (done by every counselor).
 
 ---
 
-## <img src="docs/mascot/ogonek-wow.png" width="40" align="absmiddle"> Часть 1. Быстрая проверка с компьютера
+## <img src="docs/mascot/ogonek-wow.png" width="40" align="absmiddle"> Part 1. Quick test from your computer
 
-Подходит, чтобы показать приложение. Работает, только пока компьютер включён, и телефон должен быть в той же Wi-Fi сети.
+Good for showing the app. It works only while the computer is on, and the phone must be on the same Wi-Fi network.
 
-1. На компьютере откройте терминал и выполните:
+1. On the computer, open a terminal and run:
    ```bash
    cd ~/mastro/ogonek
    npm install
    npm run phone:prod
    ```
-2. Узнайте IP-адрес компьютера:
+2. Find the computer's IP address:
    ```bash
    hostname -I
    ```
-   Нужен первый адрес, например `172.16.5.29`.
-3. На телефоне откройте в браузере `http://172.16.5.29:8090` (подставьте свой адрес).
+   You need the first address, for example `172.16.5.29`.
+3. On the phone, open `http://172.16.5.29:8090` in the browser (use your own address).
 
-> В этом режиме приложение **не устанавливается** и **не работает без интернета**: браузер разрешает это только для сайтов по HTTPS. Для настоящей установки переходите к части 2.
+> In this mode the app **cannot be installed** and **does not work offline**: browsers allow that only for HTTPS sites. For a real installation, go to Part 2.
 
-**Если не открывается:**
-- Проверьте, что телефон и компьютер подключены к одной Wi-Fi сети.
-- Выключите VPN на компьютере.
-- Проверьте, что в терминале не было ошибок и команда всё ещё работает (окно не закрыто).
+**If it does not open:**
+- Make sure the phone and the computer are on the same Wi-Fi network.
+- Turn off the VPN on the computer.
+- Check that the terminal shows no errors and the command is still running (the window is not closed).
 
 ---
 
-## <img src="docs/mascot/ogonek-cool.png" width="40" align="absmiddle"> Часть 2. Получить постоянную ссылку (один раз)
+## <img src="docs/mascot/ogonek-cool.png" width="40" align="absmiddle"> Part 2. Get a permanent link (once)
 
-Приложение нужно выложить на сайт с HTTPS. Это бесплатно.
+The app must be published on an HTTPS site. This is free.
 
-### Способ А: Netlify Drop (без регистрации, 2 минуты)
+### Option A: Netlify Drop (no sign-up, 2 minutes)
 
-1. Соберите приложение:
+1. Build the app:
    ```bash
    cd ~/mastro/ogonek
    npm install
    npx ng build
    ```
-   Появится папка `~/mastro/ogonek/dist/ogonek/browser`.
-2. Откройте в браузере на компьютере https://app.netlify.com/drop.
-3. Перетащите папку **`browser`** в окно сайта.
-4. Через несколько секунд появится ссылка вида `https://что-то-случайное.netlify.app`. Это адрес приложения.
+   This creates the folder `~/mastro/ogonek/dist/ogonek/browser`.
+2. On the computer, open https://app.netlify.com/drop in a browser.
+3. Drag the **`browser`** folder into the page.
+4. In a few seconds you get a link like `https://something-random.netlify.app`. That is the app's address.
 
-> Без регистрации ссылка живёт около часа. Чтобы она работала всегда, зарегистрируйтесь на Netlify (можно войти через GitHub) и нажмите «Claim site». Там же можно поменять адрес, например на `ogonek-maestro.netlify.app`.
+> Without an account the link lasts about an hour. To keep it forever, sign up for Netlify (you can log in with GitHub) and click "Claim site". There you can also change the address, for example to `ogonek-maestro.netlify.app`.
 
-### Способ Б: GitHub Pages (ссылка на основе репозитория)
+### Option B: GitHub Pages (a link based on this repository)
 
-1. Соберите приложение:
+1. Build the app:
    ```bash
    cd ~/mastro/ogonek
    npx ng build
    ```
-2. Выложите сборку в отдельную ветку `gh-pages`:
+2. Publish the build to a separate `gh-pages` branch:
    ```bash
    cd ~/mastro/ogonek
    npx angular-cli-ghpages --dir=dist/ogonek/browser --no-silent
    ```
-3. На GitHub откройте репозиторий → **Settings** → **Pages**.
-   В **Source** выберите «Deploy from a branch», ветку **`gh-pages`**, папку **`/ (root)`** и нажмите **Save**.
-4. Через 1–2 минуты приложение откроется по адресу:
+3. On GitHub, open the repository → **Settings** → **Pages**.
+   Under **Source** choose "Deploy from a branch", branch **`gh-pages`**, folder **`/ (root)`**, and click **Save**.
+4. After 1–2 minutes the app opens at:
    `https://chipichapus-chipi-chapa.github.io/Ogonek-A-Collection-of-Games-for-Camp-Counselors/`
 
-**Как обновить приложение:** повторите шаги 1–2 (сборка и выкладка). У вожатых обновление подтянется само, когда телефон будет в интернете.
+**To update the app:** repeat steps 1–2 (build and publish). Counselors' phones pick up the update automatically when they are online.
 
 ---
 
-## <img src="docs/mascot/ogonek-love.png" width="40" align="absmiddle"> Часть 3. Установка на телефон (для вожатых)
+## <img src="docs/mascot/ogonek-love.png" width="40" align="absmiddle"> Part 3. Install on a phone (for counselors)
 
-Перешлите вожатым ссылку из части 2. Устанавливать нужно **один раз, при интернете**.
+Send counselors the link from Part 2. Installation is needed **once, with internet**.
 
 ### Android (Chrome)
 
-1. Откройте ссылку в **Chrome**.
-2. Дождитесь, пока появится заставка с Огоньком.
-3. Нажмите меню **⋮** (три точки справа вверху).
-4. Выберите **«Установить приложение»** (или **«Добавить на главный экран»**) и подтвердите.
-5. На рабочем столе появится иконка **Огонёк**.
+1. Open the link in **Chrome**.
+2. Wait for the splash screen with Ogonek.
+3. Tap the **⋮** menu (three dots, top right).
+4. Choose **Install app** (or **Add to Home screen**) and confirm.
+5. The **Огонёк** icon appears on the home screen.
 
-> Яндекс Браузер и Samsung Internet тоже подходят: ищите в меню пункт «Добавить на главный экран» / «Установить».
+> Yandex Browser and Samsung Internet work too: look for "Add to Home screen" / "Install" in the menu.
 
 ### iPhone (Safari)
 
-1. Откройте ссылку именно в **Safari**: в других браузерах на iPhone установка не работает.
-2. Нажмите кнопку **«Поделиться»** (квадрат со стрелкой вверх внизу экрана).
-3. Пролистайте вниз и выберите **«На экран „Домой“»**.
-4. Нажмите **«Добавить»**.
-5. На рабочем столе появится иконка **Огонёк**.
+1. Open the link in **Safari**: installation does not work in other browsers on iPhone.
+2. Tap **Share** (the square with an arrow pointing up, at the bottom of the screen).
+3. Scroll down and choose **Add to Home Screen**.
+4. Tap **Add**.
+5. The **Огонёк** icon appears on the home screen.
 
-### Проверьте, что всё работает без интернета
+### Check that it works offline
 
-1. После установки один раз откройте приложение с иконки и полистайте пару разделов.
-2. Включите режим полёта.
-3. Закройте приложение и откройте его снова: все игры на месте.
-
----
-
-## <img src="docs/mascot/ogonek-star.png" width="40" align="absmiddle"> Как пользоваться
-
-<p align="center"><img src="docs/screens.png" alt="Экраны приложения" width="100%"></p>
-
-- **Поехали!** на заставке → выберите возраст или «Общелагерные мероприятия».
-- Возраст → **вид активности** (игры-минутки, спортивные, свечки…) → **игра**.
-- **♡ В избранное** — игра появится во вкладке «Избранное».
-- **＋ Создать** (красная кнопка внизу) — своя игра. Прямо в форме можно добавить **свой фильтр** (вид активности).
-- **Мои** — «Моя копилка» с вкладками: свои **игры**, свои **фильтры** (здесь их тоже можно создавать и удалять) и резервная **копия**.
-- **Поиск** — по названию и тексту, с фильтрами по возрасту и виду активности.
-- Кнопка **«назад»** на телефоне возвращает на предыдущий экран.
-
-### Важно про свои игры
-
-Свои игры, фильтры и избранное хранятся **только на этом телефоне**. Чтобы не потерять их или передать другому вожатому:
-
-- **«Мои» → вкладка «Копия» → «Сохранить в файл»** — скачается файл с вашими играми и фильтрами;
-- на другом телефоне: **«Мои» → «Копия» → «Загрузить из файла»** и выберите этот файл (например, из Telegram или с Диска). Фильтры с одинаковым названием объединятся, дублей не будет.
-
-Если удалить приложение или очистить данные браузера, свои игры пропадут. Сохраняйте файл время от времени.
+1. After installing, open the app from the icon once and browse a couple of sections.
+2. Turn on airplane mode.
+3. Close the app and open it again: all games are still there.
 
 ---
 
-## <img src="docs/mascot/ogonek-sleepy.png" width="40" align="absmiddle"> Частые вопросы
+## <img src="docs/mascot/ogonek-star.png" width="40" align="absmiddle"> How to use it
 
-**Нет пункта «Установить приложение».**
-Откройте ссылку именно в Chrome (на Android) или Safari (на iPhone), дождитесь полной загрузки и обновите страницу. Ссылка должна начинаться с `https://`.
+<p align="center"><img src="docs/screens.png" alt="App screens" width="100%"></p>
 
-**Открывается старая версия.**
-Откройте приложение при интернете, закройте и откройте ещё раз: обновление подтягивается в фоне.
+- **Let's go!** («Поехали!») on the splash screen → choose an age group or camp-wide events («Общелагерные мероприятия»).
+- Age group → **activity type** (minute games, sports, evening circles…) → **game**.
+- **Add to favorites** («♡ В избранное») — the game appears in the Favorites tab («Избранное»).
+- **＋ Create** («Создать», the red button at the bottom) — add your own game. You can add **your own filter** (activity type) right in the form.
+- **My** («Мои») — "My collection" («Моя копилка») with tabs: your **games** («Игры»), your **filters** («Фильтры», you can create and delete them here too) and **backup** («Копия»).
+- **Search** («Поиск») — by title and text, with filters by age group and activity type.
+- The phone's **back** button returns to the previous screen.
 
-**Пропали мои игры.**
-Скорее всего, очистили данные браузера или переустановили приложение. Восстановить их можно только из файла резервной копии («Мои» → «Копия» → «Загрузить из файла»).
+### Important: your own games
+
+Your games, filters and favorites are stored **only on this phone**. To keep them safe or share them with another counselor:
+
+- **My** («Мои») → **Backup** tab («Копия») → **Save to file** («Сохранить в файл») — downloads a file with your games and filters;
+- on the other phone: **My** («Мои») → **Backup** («Копия») → **Load from file** («Загрузить из файла») and pick that file (for example, from Telegram or a cloud drive). Filters with the same name are merged, no duplicates.
+
+If you delete the app or clear the browser data, your games are lost. Save the file from time to time.
+
+---
+
+## <img src="docs/mascot/ogonek-sleepy.png" width="40" align="absmiddle"> FAQ
+
+**There is no "Install app" option.**
+Open the link in Chrome (Android) or Safari (iPhone), wait for it to load fully, and refresh the page. The link must start with `https://`.
+
+**An old version opens.**
+Open the app while online, close it and open it again: updates are downloaded in the background.
+
+**My games disappeared.**
+Most likely the browser data was cleared or the app was reinstalled. They can only be restored from a backup file (**My** → **Backup** → **Load from file**).
 
 ---
 
 <p align="center">
   <img src="docs/mascot/ogonek-wink.png" width="64"><br>
-  <i>СПО «Маэстро» · гореть самому — зажигать других</i>
+  <i>SPO «Maestro» · burn yourself — light up others</i>
 </p>

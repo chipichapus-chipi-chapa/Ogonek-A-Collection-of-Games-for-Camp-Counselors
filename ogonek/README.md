@@ -53,7 +53,7 @@
 | `cool` | <img src="../docs/mascot/ogonek-cool.png" width="40"> | старший возраст |
 | `wow` | <img src="../docs/mascot/ogonek-wow.png" width="40"> | ничего не нашлось, ошибка |
 | `sleepy` | <img src="../docs/mascot/ogonek-sleepy.png" width="40"> | пустой раздел |
-| `point` | <img src="../docs/mascot/ogonek-point.png" width="40"> | «Мои статьи»: подсказка, что делать |
+| `point` | <img src="../docs/mascot/ogonek-point.png" width="40"> | пустая «Моя копилка»: подсказка, что делать |
 
 ## <img src="../docs/mascot/ogonek-cool.png" width="36" align="absmiddle"> Структура
 

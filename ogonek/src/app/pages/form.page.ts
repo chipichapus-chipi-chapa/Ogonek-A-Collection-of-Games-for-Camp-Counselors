@@ -3,12 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { Game } from '../models';
 import { StoreService } from '../store.service';
-import { OgonekComponent, ToastService, TopbarComponent } from '../ui';
+import { BackService, NewTypeComponent, OgonekComponent, ToastService, TopbarComponent } from '../ui';
 
 /** Создание и правка своей статьи. /new?age=..&type=.. или /edit/:id */
 @Component({
   selector: 'og-form',
-  imports: [FormsModule, RouterLink, TopbarComponent, OgonekComponent],
+  imports: [FormsModule, RouterLink, TopbarComponent, OgonekComponent, NewTypeComponent],
   template: `
     @if (!id() || original()) {
       <div class="screen">
@@ -34,11 +34,7 @@ import { OgonekComponent, ToastService, TopbarComponent } from '../ui';
                 <button type="button" class="tog add" (click)="showNewType.set(!showNewType())">+ свой фильтр</button>
               </div>
               @if (showNewType()) {
-                <div class="newtype">
-                  <input type="text" class="emoji" name="ntIcon" [(ngModel)]="ntIcon" placeholder="🔥" maxlength="4">
-                  <input type="text" name="ntTitle" [(ngModel)]="ntTitle" placeholder="Название фильтра" maxlength="40">
-                  <button type="button" class="btn" (click)="addType()">ОК</button>
-                </div>
+                <og-new-type (created)="type.set($event.id); showNewType.set(false)" />
               }
             </div>
           }
@@ -70,6 +66,7 @@ export class FormPage implements OnInit {
   store = inject(StoreService);
   private router = inject(Router);
   private toast = inject(ToastService);
+  private nav = inject(BackService);
 
   original = computed(() => {
     const g = this.id() ? this.store.game(this.id()!) : undefined;
@@ -80,8 +77,6 @@ export class FormPage implements OnInit {
   ages = signal<string[]>([]);
   type = signal('');
   showNewType = signal(false);
-  ntTitle = '';
-  ntIcon = '';
   err = signal('');
   onlyCamp = computed(() => this.ages().length > 0 && this.ages().every(a => a === 'camp'));
 
@@ -92,22 +87,14 @@ export class FormPage implements OnInit {
       this.ages.set([...g.ages]);
       this.type.set(g.type);
     } else {
-      if (this.age()) this.ages.set([this.age()!]);
-      if (this.typeQ()) this.type.set(this.typeQ()!);
+      // из ссылки берём только существующие возраст и фильтр
+      if (this.age() && this.store.age(this.age()!)) this.ages.set([this.age()!]);
+      if (this.typeQ() && this.store.type(this.typeQ()!)) this.type.set(this.typeQ()!);
     }
   }
 
   toggleAge(id: string) {
     this.ages.update(l => (l.includes(id) ? l.filter(x => x !== id) : [...l, id]));
-  }
-
-  addType() {
-    const r = this.store.addType(this.ntTitle, this.ntIcon);
-    if (typeof r === 'string') return this.toast.show(r);
-    this.type.set(r.id);
-    this.ntTitle = this.ntIcon = '';
-    this.showNewType.set(false);
-    this.toast.show(`Фильтр «${r.title}» создан`);
   }
 
   save() {
@@ -129,7 +116,12 @@ export class FormPage implements OnInit {
     };
     this.store.saveGame(g);
     this.toast.show(this.id() ? 'Сохранено' : 'Статья добавлена в сборник 🔥');
-    // replaceUrl: «назад» со статьи не вернёт в форму
-    this.router.navigate(['/game', g.id], { replaceUrl: true });
+    if (this.id()) {
+      // правка: возвращаемся к статье, из которой пришли, — без дубля в истории
+      this.nav.back('/game/' + g.id);
+    } else {
+      // новая: replaceUrl — «назад» со статьи не вернёт в форму
+      this.router.navigate(['/game', g.id], { replaceUrl: true });
+    }
   }
 }

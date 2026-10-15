@@ -1,8 +1,8 @@
 /* Общие маленькие компоненты: Огонёк, шапка, строка игры, текст статьи, тост. */
-import { Component, Injectable, computed, inject, input, signal } from '@angular/core';
+import { Component, Injectable, computed, inject, input, output, signal } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { Game, Mood } from './models';
+import { ActivityType, Game, Mood } from './models';
 import { StoreService } from './store.service';
 
 @Component({
@@ -56,8 +56,8 @@ export class TopbarComponent {
     <a class="item game" [routerLink]="['/game', game().id]">
       <span class="ic">{{ letter() }}</span>
       <span class="b">
-        <span class="ttl">{{ game().title }}@if (store.isMine(game())) {<span class="mine">моя</span>}</span>
-        <span class="meta">{{ meta() }}</span>
+        <span class="ttl">{{ game().title }}</span>
+        <span class="meta">@if (store.isMine(game())) {<span class="mine">моя</span>}{{ meta() }}</span>
       </span>
       @if (store.isFav(game().id)) {<span class="fav-dot" aria-label="В избранном">♥</span>}
       <span class="chev"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></span>
@@ -127,5 +127,34 @@ export class ToastService {
     this.msg.set(m);
     clearTimeout(this.t);
     this.t = setTimeout(() => this.msg.set(''), 1800);
+  }
+}
+
+/** Поля «новый фильтр» (вид активности). Enter создаёт фильтр, а не отправляет внешнюю форму. */
+@Component({
+  selector: 'og-new-type',
+  template: `
+    <div class="newtype">
+      <input type="text" class="emoji" [value]="icon()" (input)="icon.set($any($event.target).value)"
+        (keydown.enter)="$event.preventDefault(); add()" placeholder="🔥" maxlength="4" aria-label="Значок фильтра">
+      <input type="text" [value]="title()" (input)="title.set($any($event.target).value)"
+        (keydown.enter)="$event.preventDefault(); add()" placeholder="Название фильтра" maxlength="40" aria-label="Название фильтра">
+      <button type="button" class="btn" (click)="add()">ОК</button>
+    </div>`
+})
+export class NewTypeComponent {
+  created = output<ActivityType>();
+  title = signal('');
+  icon = signal('');
+  private store = inject(StoreService);
+  private toast = inject(ToastService);
+
+  add() {
+    const r = this.store.addType(this.title(), this.icon());
+    if (typeof r === 'string') return this.toast.show(r);
+    this.title.set('');
+    this.icon.set('');
+    this.toast.show(`Фильтр «${r.title}» создан`);
+    this.created.emit(r);
   }
 }

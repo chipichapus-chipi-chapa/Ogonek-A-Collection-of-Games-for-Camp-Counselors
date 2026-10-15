@@ -64,7 +64,7 @@
 | <img src="docs/mascot/ogonek-cool.png" width="48"> | В очках | старший возраст |
 | <img src="docs/mascot/ogonek-wow.png" width="48"> | Удивлён | ничего не нашлось |
 | <img src="docs/mascot/ogonek-sleepy.png" width="48"> | Спит | пустой раздел |
-| <img src="docs/mascot/ogonek-point.png" width="48"> | Показывает | «Мои статьи»: подсказка, что делать |
+| <img src="docs/mascot/ogonek-point.png" width="48"> | Показывает | пустая «Моя копилка»: подсказка, что делать |
 
 Рисунки: [`docs/mascot/`](docs/mascot/).
 

@@ -1,53 +1,110 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { StoreService, byTitle, plural } from '../store.service';
-import { GameItemComponent, OgonekComponent, ToastService, TopbarComponent } from '../ui';
+import { NewTypeComponent, OgonekComponent, ToastService, TopbarComponent } from '../ui';
+
+type Tab = 'games' | 'types' | 'backup';
+// выбранная вкладка переживает переход в статью и обратно
+const tab = signal<Tab>('games');
+
+const AGE_SHORT: Record<string, string> = { junior: '7–10', middle: '11–13', senior: '14–17', camp: 'лагерь' };
 
 @Component({
   selector: 'og-my',
-  imports: [RouterLink, TopbarComponent, GameItemComponent, OgonekComponent],
+  imports: [RouterLink, TopbarComponent, OgonekComponent, NewTypeComponent],
   template: `
     <div class="screen">
-      <og-top title="Мои" hl="статьи" [noBack]="true" />
-      @if (games().length) {
-        <div class="list">@for (g of games(); track g.id) { <og-game-item [game]="g" /> }</div>
-      } @else {
-        <div class="empty"><og-ogonek mood="point" [size]="130" />
-          <p>Знаешь классную игру? Запиши её — и она всегда будет с тобой, даже без интернета.</p></div>
-      }
-      <div class="pad mt"><a class="btn block" routerLink="/new">+ Новая статья</a></div>
+      <og-top title="Моя" hl="копилка" [noBack]="true" />
 
-      <div class="section-title">Мои <span class="hl">фильтры</span></div>
-      <div class="mytypes">
-        @for (t of store.myTypes(); track t.id) {
-          <div class="mytype"><span>{{ t.icon }} {{ t.title }}</span>
-            <button class="icon-btn" (click)="delType(t.id)" aria-label="Удалить фильтр">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>
-            </button></div>
-        } @empty {
-          <p class="lead" style="margin:0">Свои виды активностей можно добавить при создании статьи</p>
+      <div class="seg" role="tablist">
+        <button role="tab" [class.on]="tab() === 'games'" [attr.aria-selected]="tab() === 'games'" (click)="tab.set('games')">
+          Статьи <span class="n">{{ games().length }}</span></button>
+        <button role="tab" [class.on]="tab() === 'types'" [attr.aria-selected]="tab() === 'types'" (click)="tab.set('types')">
+          Фильтры <span class="n">{{ store.myTypes().length }}</span></button>
+        <button role="tab" [class.on]="tab() === 'backup'" [attr.aria-selected]="tab() === 'backup'" (click)="tab.set('backup')">Копия</button>
+      </div>
+
+      @switch (tab()) {
+        @case ('games') {
+          @if (games().length) {
+            <div class="list">
+              @for (g of games(); track g.id) {
+                <div class="mycard">
+                  <a class="mc-body" [routerLink]="['/game', g.id]">
+                    <span class="mc-title">{{ g.title }}</span>
+                    <span class="mc-meta">
+                      @for (a of g.ages; track a) { <span class="mc-age">{{ ageShort(a) }}</span> }
+                      @if (typeLabel(g.type); as t) { <span class="mc-type">{{ t }}</span> }
+                      @if (store.isFav(g.id)) { <span class="mc-fav" aria-label="В избранном">♥</span> }
+                    </span>
+                  </a>
+                  <a class="icon-btn mc-edit" [routerLink]="['/edit', g.id]" aria-label="Редактировать">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/></svg>
+                  </a>
+                </div>
+              }
+            </div>
+          } @else {
+            <div class="empty"><og-ogonek mood="point" [size]="120" />
+              <p>Знаешь классную игру? Запиши её — и она всегда будет с тобой, даже без интернета.</p></div>
+          }
+          <div class="pad mt"><a class="btn block" routerLink="/new">+ Новая статья</a></div>
         }
-      </div>
 
-      <div class="section-title">Резервная <span class="hl">копия</span></div>
-      <div class="pad backup">
-        <button class="btn ghost light block" (click)="exportFile()">Сохранить в файл</button>
-        <label class="btn ghost light block">Загрузить из файла
-          <input type="file" accept="application/json,.json" hidden (change)="importFile($event)"></label>
-        <p class="lead small">Свои статьи и избранное хранятся только на этом телефоне. Сохрани файл, чтобы перенести их или поделиться с другим вожатым.</p>
-      </div>
+        @case ('types') {
+          <p class="lead pad">Свой вид активности появится <span class="hl">во всех возрастах</span></p>
+          <div class="mytypes">
+            @for (t of store.myTypes(); track t.id) {
+              <div class="mytype">
+                <span class="mt-ic">{{ t.icon || '★' }}</span>
+                <span class="mt-t">{{ t.title }}<small>{{ usage(t.id) }}</small></span>
+                <button class="icon-btn" (click)="delType(t.id)" aria-label="Удалить фильтр">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/></svg>
+                </button>
+              </div>
+            }
+            <og-new-type />
+          </div>
+        }
+
+        @case ('backup') {
+          <div class="pad backup">
+            <p class="lead small">Свои статьи, фильтры и избранное хранятся <span class="hl">только на этом телефоне</span>. Сохрани файл, чтобы перенести их или поделиться с другим вожатым.</p>
+            <button class="btn ghost light block" (click)="exportFile()">Сохранить в файл</button>
+            <label class="btn ghost light block">Загрузить из файла
+              <input type="file" accept="application/json,.json" hidden (change)="importFile($event)"></label>
+          </div>
+        }
+      }
     </div>`
 })
 export class MyPage {
   store = inject(StoreService);
   private toast = inject(ToastService);
+  tab = tab;
   games = computed(() => [...this.store.myGames()].sort(byTitle));
+
+  ageShort(id: string) { return AGE_SHORT[id] ?? id; }
+
+  typeLabel(id: string) {
+    if (id === 'camp') return '';
+    const t = this.store.type(id);
+    return t ? `${t.icon} ${t.title}` : '';
+  }
+
+  usage(id: string) {
+    const n = this.store.typeUsage(id);
+    return n ? `${n} ${plural(n, 'статья', 'статьи', 'статей')}` : 'пока пусто';
+  }
 
   delType(id: string) {
     const t = this.store.myTypes().find(x => x.id === id);
-    if (!t || !confirm(`Удалить фильтр «${t.title}»?`)) return;
-    const used = this.store.deleteType(id);
-    if (used) this.toast.show(`Фильтр используется в ${used} ${plural(used, 'статье', 'статьях', 'статьях')}`);
+    if (!t) return;
+    const used = this.store.typeUsage(id);
+    if (used) return this.toast.show(`Фильтр используется в ${used} ${plural(used, 'статье', 'статьях', 'статьях')}`);
+    if (!confirm(`Удалить фильтр «${t.title}»?`)) return;
+    this.store.deleteType(id);
+    this.toast.show(`Фильтр «${t.title}» удалён`);
   }
 
   exportFile() {

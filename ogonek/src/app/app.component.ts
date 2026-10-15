@@ -1,11 +1,11 @@
 import { Component, DestroyRef, inject, signal } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { filter } from 'rxjs';
-import { ToastService } from './ui';
+import { ConfirmComponent, ToastService } from './ui';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, RouterLink],
+  imports: [RouterOutlet, RouterLink, ConfirmComponent],
   template: `
     <main id="app" [class.no-tabs]="!tab()"><router-outlet /></main>
     @if (tab(); as t) {
@@ -22,7 +22,8 @@ import { ToastService } from './ui';
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M14 6l4 4"/></svg><span>Мои</span></a>
       </nav>
     }
-    <div class="toast" [class.show]="toast.msg()" role="status">{{ toast.msg() }}</div>`
+    <div class="toast" [class.show]="toast.msg()" role="status">{{ toast.msg() }}</div>
+    <og-confirm />`
 })
 export class AppComponent {
   toast = inject(ToastService);

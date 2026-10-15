@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { StoreService, byTitle, plural } from '../store.service';
-import { NewTypeComponent, OgonekComponent, ToastService, TopbarComponent } from '../ui';
+import { ConfirmService, NewTypeComponent, OgonekComponent, ToastService, TopbarComponent } from '../ui';
 
 type Tab = 'games' | 'types' | 'backup';
 // выбранная вкладка переживает переход в статью и обратно
@@ -81,6 +81,7 @@ const AGE_SHORT: Record<string, string> = { junior: '7–10', middle: '11–13',
 export class MyPage {
   store = inject(StoreService);
   private toast = inject(ToastService);
+  private dlg = inject(ConfirmService);
   tab = tab;
   games = computed(() => [...this.store.myGames()].sort(byTitle));
 
@@ -97,12 +98,18 @@ export class MyPage {
     return n ? `${n} ${plural(n, 'статья', 'статьи', 'статей')}` : 'пока пусто';
   }
 
-  delType(id: string) {
+  async delType(id: string) {
     const t = this.store.myTypes().find(x => x.id === id);
     if (!t) return;
     const used = this.store.typeUsage(id);
     if (used) return this.toast.show(`Фильтр используется в ${used} ${plural(used, 'статье', 'статьях', 'статьях')}`);
-    if (!confirm(`Удалить фильтр «${t.title}»?`)) return;
+    const ok = await this.dlg.ask({
+      title: 'Удалить фильтр?',
+      text: `«${t.title}» исчезнет из всех возрастов. Статей в нём нет, так что ничего не потеряется.`,
+      ok: 'Удалить',
+      mood: 'sleepy'
+    });
+    if (!ok) return;
     this.store.deleteType(id);
     this.toast.show(`Фильтр «${t.title}» удалён`);
   }

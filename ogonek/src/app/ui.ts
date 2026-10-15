@@ -1,5 +1,5 @@
 /* Общие маленькие компоненты: Огонёк, шапка, строка игры, текст статьи, тост. */
-import { Component, Injectable, computed, inject, input, output, signal } from '@angular/core';
+import { Component, ElementRef, Injectable, computed, effect, inject, input, output, signal, viewChild } from '@angular/core';
 import { Location } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ActivityType, Game, Mood } from './models';
@@ -156,5 +156,68 @@ export class NewTypeComponent {
     this.icon.set('');
     this.toast.show(`Фильтр «${r.title}» создан`);
     this.created.emit(r);
+  }
+}
+
+export interface ConfirmOptions {
+  title: string;
+  text?: string;
+  ok?: string;
+  cancel?: string;
+  mood?: Mood;
+}
+
+/** Своё окно подтверждения вместо системного confirm(). ask() → Promise<boolean>. */
+@Injectable({ providedIn: 'root' })
+export class ConfirmService {
+  readonly current = signal<ConfirmOptions | null>(null);
+  private resolve?: (v: boolean) => void;
+
+  ask(opts: ConfirmOptions): Promise<boolean> {
+    this.resolve?.(false);
+    this.current.set(opts);
+    return new Promise(r => (this.resolve = r));
+  }
+
+  /** Для canDeactivate: если окно открыто — закрываем его вместо перехода (кнопка «назад»). */
+  allowLeave(): boolean {
+    if (!this.current()) return true;
+    this.close(false);
+    return false;
+  }
+
+  close(result: boolean) {
+    this.current.set(null);
+    this.resolve?.(result);
+    this.resolve = undefined;
+  }
+}
+
+@Component({
+  selector: 'og-confirm',
+  imports: [OgonekComponent],
+  host: { '(document:keydown.escape)': 'opts() && dlg.close(false)' },
+  template: `
+    @if (opts(); as o) {
+      <div class="sheet-backdrop" (click)="dlg.close(false)"></div>
+      <div class="confirm-sheet" role="alertdialog" aria-modal="true" aria-labelledby="cf-title" aria-describedby="cf-text">
+        <og-ogonek class="cf-og" [mood]="o.mood || 'wow'" [size]="110" />
+        <h2 id="cf-title">{{ o.title }}</h2>
+        @if (o.text) { <p id="cf-text">{{ o.text }}</p> }
+        <div class="cf-actions">
+          <button class="btn ghost" (click)="dlg.close(false)" #cancel>{{ o.cancel || 'Отмена' }}</button>
+          <button class="btn" (click)="dlg.close(true)">{{ o.ok || 'Удалить' }}</button>
+        </div>
+      </div>
+    }`
+})
+export class ConfirmComponent {
+  dlg = inject(ConfirmService);
+  opts = this.dlg.current;
+  private cancel = viewChild<ElementRef<HTMLButtonElement>>('cancel');
+
+  constructor() {
+    // фокус на «Отмена»: случайный Enter ничего не удалит
+    effect(() => this.cancel()?.nativeElement.focus());
   }
 }

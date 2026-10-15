@@ -1,5 +1,5 @@
 import { ApplicationConfig, isDevMode, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter, withComponentInputBinding, withHashLocation, withInMemoryScrolling } from '@angular/router';
+import { provideRouter, withComponentInputBinding, withHashLocation, withInMemoryScrolling, withRouterConfig } from '@angular/router';
 import { provideServiceWorker } from '@angular/service-worker';
 import { routes } from './app.routes';
 
@@ -11,7 +11,9 @@ export const appConfig: ApplicationConfig = {
       routes,
       withHashLocation(),
       withComponentInputBinding(),
-      withInMemoryScrolling({ scrollPositionRestoration: 'enabled' })
+      withInMemoryScrolling({ scrollPositionRestoration: 'enabled' }),
+      // отменённый переход «назад» возвращает историю на место
+      withRouterConfig({ canceledNavigationResolution: 'computed' })
     ),
     provideServiceWorker('ngsw-worker.js', {
       enabled: !isDevMode(),

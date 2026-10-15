@@ -24,7 +24,7 @@
 
 ---
 
-## <img src="docs/mascot/ogonek-wink.svg" width="40" align="absmiddle"> What it is
+## <img src="docs/mascot/ogonek-wink.png" width="40" align="absmiddle"> What it is
 
 A camp counselor constantly needs the right game: while the group waits for the dining hall, at the evening circle, on the sports ground, at a camp-wide event. Usually these games live in notebooks, printouts and chats.
 
@@ -48,26 +48,27 @@ A camp counselor constantly needs the right game: while the group waits for the 
 
 ---
 
-## <img src="docs/mascot/ogonek-love.svg" width="40" align="absmiddle"> Visual style
+## <img src="docs/mascot/ogonek-love.png" width="40" align="absmiddle"> Visual style
 
 The brand style comes from the squad's "Commanding staff elections 2026–2027" posts: a paper collage, grainy background, a tilted sheet of kraft paper, a red starburst and photos in cream frames. The screen layout uses large rounded cards and pill-shaped buttons.
 
 ### Mascot — Ogonek
 
-A blue face with flaming hair — the counselor spirit: **"burn yourself — light up others"**. Drawn with a slight hand-drawn wobble, like on the posts. Ogonek has six moods, each used in its own situation in the app:
+A blue face with flaming hair — the counselor spirit: **"burn yourself — light up others"**. Hand-drawn in crayon, like the squad's posts. Ogonek has seven moods, each used in its own situation in the app:
 
-<p align="center"><img src="docs/en/mascot.png" alt="Ogonek's six moods" width="100%"></p>
+<p align="center"><img src="docs/en/mascot.png" alt="Ogonek's seven moods" width="100%"></p>
 
 | | Mood | Where it appears |
 |:---:|---|---|
-| <img src="docs/mascot/ogonek-smile.svg" width="48"> | Smile | home, articles |
-| <img src="docs/mascot/ogonek-wink.svg" width="48"> | Wink | splash screen, counselor tips |
-| <img src="docs/mascot/ogonek-love.svg" width="48"> | In love | favorites, camp-wide events |
-| <img src="docs/mascot/ogonek-cool.svg" width="48"> | Cool | senior age group, "My articles" |
-| <img src="docs/mascot/ogonek-wow.svg" width="48"> | Surprised | nothing found |
-| <img src="docs/mascot/ogonek-sleepy.svg" width="48"> | Sleepy | empty section |
+| <img src="docs/mascot/ogonek-star.png" width="48"> | Star eyes | home, junior group, articles |
+| <img src="docs/mascot/ogonek-wink.png" width="48"> | Wink | splash screen, counselor tips |
+| <img src="docs/mascot/ogonek-love.png" width="48"> | In love | favorites, camp-wide events |
+| <img src="docs/mascot/ogonek-cool.png" width="48"> | Cool | senior age group |
+| <img src="docs/mascot/ogonek-wow.png" width="48"> | Surprised | nothing found |
+| <img src="docs/mascot/ogonek-sleepy.png" width="48"> | Sleepy | empty section |
+| <img src="docs/mascot/ogonek-point.png" width="48"> | Pointing | "My articles": a hint on what to do |
 
-Vector files: [`docs/mascot/`](docs/mascot/).
+Drawings: [`docs/mascot/`](docs/mascot/).
 
 ### Colors
 
@@ -108,20 +109,20 @@ Full brand book (in Russian): [`brandbook.html`](brandbook.html). Open it in a b
 
 ---
 
-## <img src="docs/mascot/ogonek-smile.svg" width="40" align="absmiddle"> Install on a phone
+## <img src="docs/mascot/ogonek-star.png" width="40" align="absmiddle"> Install on a phone
 
 Step-by-step guide for counselors and for whoever publishes the app: **[INSTALL.md](INSTALL.md)**.
 
-## <img src="docs/mascot/ogonek-cool.svg" width="40" align="absmiddle"> Repository contents
+## <img src="docs/mascot/ogonek-cool.png" width="40" align="absmiddle"> Repository contents
 
 | Folder / file | What it is |
 |---|---|
 | [`ogonek/`](ogonek/) | **The main app**, Angular 19, see [ogonek/README.md](ogonek/README.md) |
 | [`brandbook.html`](brandbook.html) | Brand book: mascot, colors, fonts, graphic elements, interface, voice |
-| [`docs/`](docs/) | Images for the READMEs and Ogonek SVGs (`docs/en/` — English versions) |
+| [`docs/`](docs/) | Images for the READMEs and Ogonek drawings (`docs/en/` — English versions) |
 | [`app/`](app/) | First version in plain HTML/JS (prototype). The brand book takes fonts, Ogonek and live screens from it |
 
-## <img src="docs/mascot/ogonek-wow.svg" width="40" align="absmiddle"> Quick start
+## <img src="docs/mascot/ogonek-wow.png" width="40" align="absmiddle"> Quick start
 
 ```bash
 cd ogonek
@@ -143,6 +144,6 @@ Brand book: run `python3 -m http.server 8765` in the repository root and open ht
 ---
 
 <p align="center">
-  <img src="docs/mascot/ogonek-sleepy.svg" width="64"><br>
+  <img src="docs/mascot/ogonek-sleepy.png" width="64"><br>
   <i>Made for SPO «Maestro» · burn yourself — light up others</i>
 </p>

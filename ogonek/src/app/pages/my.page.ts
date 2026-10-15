@@ -12,7 +12,7 @@ import { GameItemComponent, OgonekComponent, ToastService, TopbarComponent } fro
       @if (games().length) {
         <div class="list">@for (g of games(); track g.id) { <og-game-item [game]="g" /> }</div>
       } @else {
-        <div class="empty"><og-ogonek mood="cool" [size]="110" />
+        <div class="empty"><og-ogonek mood="point" [size]="130" />
           <p>Знаешь классную игру? Запиши её — и она всегда будет с тобой, даже без интернета.</p></div>
       }
       <div class="pad mt"><a class="btn block" routerLink="/new">+ Новая статья</a></div>

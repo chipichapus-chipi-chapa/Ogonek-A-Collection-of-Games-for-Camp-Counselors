@@ -1,4 +1,5 @@
-export type Mood = 'smile' | 'wink' | 'love' | 'cool' | 'wow' | 'sleepy';
+/** Эмоции Огонька — файлы public/img/ogonek/<mood>.webp */
+export type Mood = 'star' | 'wink' | 'love' | 'cool' | 'wow' | 'sleepy' | 'point';
 
 export interface Age {
   id: string;

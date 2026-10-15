@@ -16,7 +16,7 @@ This guide has three parts:
 
 ---
 
-## <img src="docs/mascot/ogonek-wow.svg" width="40" align="absmiddle"> Part 1. Quick test from your computer
+## <img src="docs/mascot/ogonek-wow.png" width="40" align="absmiddle"> Part 1. Quick test from your computer
 
 Good for showing the app. It works only while the computer is on, and the phone must be on the same Wi-Fi network.
 
@@ -42,7 +42,7 @@ Good for showing the app. It works only while the computer is on, and the phone 
 
 ---
 
-## <img src="docs/mascot/ogonek-cool.svg" width="40" align="absmiddle"> Part 2. Get a permanent link (once)
+## <img src="docs/mascot/ogonek-cool.png" width="40" align="absmiddle"> Part 2. Get a permanent link (once)
 
 The app must be published on an HTTPS site. This is free.
 
@@ -82,7 +82,7 @@ The app must be published on an HTTPS site. This is free.
 
 ---
 
-## <img src="docs/mascot/ogonek-love.svg" width="40" align="absmiddle"> Part 3. Install on a phone (for counselors)
+## <img src="docs/mascot/ogonek-love.png" width="40" align="absmiddle"> Part 3. Install on a phone (for counselors)
 
 Send counselors the link from Part 2. Installation is needed **once, with internet**.
 
@@ -112,7 +112,7 @@ Send counselors the link from Part 2. Installation is needed **once, with intern
 
 ---
 
-## <img src="docs/mascot/ogonek-smile.svg" width="40" align="absmiddle"> How to use it
+## <img src="docs/mascot/ogonek-star.png" width="40" align="absmiddle"> How to use it
 
 <p align="center"><img src="docs/screens.png" alt="App screens" width="100%"></p>
 
@@ -134,7 +134,7 @@ If you delete the app or clear the browser data, your articles are lost. Save th
 
 ---
 
-## <img src="docs/mascot/ogonek-sleepy.svg" width="40" align="absmiddle"> FAQ
+## <img src="docs/mascot/ogonek-sleepy.png" width="40" align="absmiddle"> FAQ
 
 **There is no "Install app" option.**
 Open the link in Chrome (Android) or Safari (iPhone), wait for it to load fully, and refresh the page. The link must start with `https://`.
@@ -148,6 +148,6 @@ Most likely the browser data was cleared or the app was reinstalled. They can on
 ---
 
 <p align="center">
-  <img src="docs/mascot/ogonek-wink.svg" width="64"><br>
+  <img src="docs/mascot/ogonek-wink.png" width="64"><br>
   <i>SPO «Maestro» · burn yourself — light up others</i>
 </p>

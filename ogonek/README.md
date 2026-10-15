@@ -11,7 +11,7 @@
 
 <p align="center"><img src="../docs/screens.png" alt="App screens" width="100%"></p>
 
-## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> What it is
+## <img src="../docs/mascot/ogonek-wink.png" width="36" align="absmiddle"> What it is
 
 A camp counselor constantly needs the right game: while the group waits for the dining hall, at the evening circle, on the sports ground, at a camp-wide event. Usually these games live in notebooks, printouts and chats. Ogonek gathers them in one place, on the phone, and works **offline**: connectivity at camps is often poor.
 
@@ -25,7 +25,7 @@ Technically it is a PWA built with Angular 19: it installs on the phone's home s
 
 > The app interface and the built-in game texts are in Russian.
 
-## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Style in code
+## <img src="../docs/mascot/ogonek-love.png" width="36" align="absmiddle"> Style in code
 
 <p align="center"><img src="../docs/en/palette.png" alt="Palette" width="100%"></p>
 
@@ -43,20 +43,21 @@ Colors and fonts are CSS variables in `src/styles.scss`:
 }
 ```
 
-Ogonek is the `<og-ogonek mood="wink" [size]="96" />` component (`src/app/ui.ts`). The drawing itself is built as SVG in `src/app/mascot.ts`.
+Ogonek is the `<og-ogonek mood="wink" [size]="96" />` component (`src/app/ui.ts`). The drawings live in `public/img/ogonek/<mood>.webp`: to add a mood, drop a file there and add its name to the `Mood` type (`src/app/models.ts`).
 
 <p align="center"><img src="../docs/en/mascot.png" alt="Ogonek's moods" width="100%"></p>
 
 | `mood` | | Where it is used |
 |---|:---:|---|
-| `smile` | <img src="../docs/mascot/ogonek-smile.svg" width="40"> | home, articles |
-| `wink` | <img src="../docs/mascot/ogonek-wink.svg" width="40"> | splash screen, counselor tips |
-| `love` | <img src="../docs/mascot/ogonek-love.svg" width="40"> | favorites, camp-wide events |
-| `cool` | <img src="../docs/mascot/ogonek-cool.svg" width="40"> | senior age group, "My articles" |
-| `wow` | <img src="../docs/mascot/ogonek-wow.svg" width="40"> | nothing found, error |
-| `sleepy` | <img src="../docs/mascot/ogonek-sleepy.svg" width="40"> | empty section |
+| `star` | <img src="../docs/mascot/ogonek-star.png" width="40"> | home, articles |
+| `wink` | <img src="../docs/mascot/ogonek-wink.png" width="40"> | splash screen, counselor tips |
+| `love` | <img src="../docs/mascot/ogonek-love.png" width="40"> | favorites, camp-wide events |
+| `cool` | <img src="../docs/mascot/ogonek-cool.png" width="40"> | senior age group |
+| `wow` | <img src="../docs/mascot/ogonek-wow.png" width="40"> | nothing found, error |
+| `sleepy` | <img src="../docs/mascot/ogonek-sleepy.png" width="40"> | empty section |
+| `point` | <img src="../docs/mascot/ogonek-point.png" width="40"> | "My articles": a hint on what to do |
 
-## <img src="../docs/mascot/ogonek-cool.svg" width="36" align="absmiddle"> Structure
+## <img src="../docs/mascot/ogonek-cool.png" width="36" align="absmiddle"> Structure
 
 ```
 src/app/
@@ -64,23 +65,22 @@ src/app/
   app.component.ts     shell: screen + bottom tab bar + toast
   store.service.ts     data: built-in collection + own articles/filters/favorites (signals + localStorage)
   seed.ts              built-in game collection — add "official" games here
-  mascot.ts            Ogonek as SVG (6 moods)
   ui.ts                shared components: <og-ogonek>, <og-top>, <og-game-item>, <og-rich-text>
   pages/               screens: splash, home, age, games, game, search, fav, my, form
 src/styles.scss        styles and brand colors (:root)
 src/fonts/             fonts (bundled into the build)
-public/                icons, manifest, Ogonek SVGs
+public/                icons, manifest, Ogonek (img/ogonek/*.webp, 7 moods)
 ngsw-config.json       offline cache (Angular Service Worker)
 ```
 
-## <img src="../docs/mascot/ogonek-smile.svg" width="36" align="absmiddle"> Run
+## <img src="../docs/mascot/ogonek-star.png" width="36" align="absmiddle"> Run
 
 ```bash
 npm install
 npm start                # development on your computer: http://localhost:4200
 ```
 
-## <img src="../docs/mascot/ogonek-wink.svg" width="36" align="absmiddle"> Open on a phone
+## <img src="../docs/mascot/ogonek-wink.png" width="36" align="absmiddle"> Open on a phone
 
 The phone and the computer must be on the same Wi-Fi network.
 
@@ -93,7 +93,7 @@ For development with live reload there is `npm run phone` (port 4200).
 
 > Over a local address (http) the app opens, but the browser does not enable offline mode or installation: that requires HTTPS.
 
-## <img src="../docs/mascot/ogonek-love.svg" width="36" align="absmiddle"> Install on phones permanently
+## <img src="../docs/mascot/ogonek-love.png" width="36" align="absmiddle"> Install on phones permanently
 
 1. `npx ng build` → folder `dist/ogonek/browser`.
 2. Publish it on any HTTPS hosting, for example drag it onto https://app.netlify.com/drop.
@@ -106,7 +106,7 @@ An APK can be generated with https://www.pwabuilder.com from the link in step 2.
 
 Full step-by-step guide: [INSTALL.md](../INSTALL.md).
 
-## <img src="../docs/mascot/ogonek-wow.svg" width="36" align="absmiddle"> Article text markup
+## <img src="../docs/mascot/ogonek-wow.png" width="36" align="absmiddle"> Article text markup
 
 ```
 ## Subheading
@@ -118,6 +118,6 @@ Full step-by-step guide: [INSTALL.md](../INSTALL.md).
 ---
 
 <p align="center">
-  <img src="../docs/mascot/ogonek-smile.svg" width="64"><br>
+  <img src="../docs/mascot/ogonek-star.png" width="64"><br>
   <i>SPO «Maestro» · burn yourself — light up others</i>
 </p>

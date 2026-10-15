@@ -1,3 +1,4 @@
+import { inject } from '@angular/core';
 import { Routes } from '@angular/router';
 import { AgePage } from './pages/age.page';
 import { FavPage } from './pages/fav.page';
@@ -8,9 +9,10 @@ import { HomePage } from './pages/home.page';
 import { MyPage } from './pages/my.page';
 import { SearchPage } from './pages/search.page';
 import { SplashPage } from './pages/splash.page';
+import { ConfirmService } from './ui';
 
 // data.tab — какая вкладка нижнего меню подсвечена (нет — меню скрыто)
-export const routes: Routes = [
+const pages: Routes = [
   { path: '', component: SplashPage },
   { path: 'home', component: HomePage, data: { tab: 'home' } },
   { path: 'age/:ageId', component: AgePage, data: { tab: 'home' } },
@@ -23,3 +25,6 @@ export const routes: Routes = [
   { path: 'edit/:id', component: FormPage },
   { path: '**', redirectTo: 'home' }
 ];
+
+// «назад» на телефоне при открытом окне подтверждения закрывает окно, а не уходит со страницы
+export const routes: Routes = pages.map(r => (r.component ? { ...r, canDeactivate: [() => inject(ConfirmService).allowLeave()] } : r));

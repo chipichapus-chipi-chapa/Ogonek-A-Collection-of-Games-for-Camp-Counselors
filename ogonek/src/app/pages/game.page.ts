@@ -1,7 +1,7 @@
 import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { StoreService } from '../store.service';
-import { BackService, OgonekComponent, RichTextComponent, ToastService, TopbarComponent } from '../ui';
+import { BackService, ConfirmService, OgonekComponent, RichTextComponent, ToastService, TopbarComponent } from '../ui';
 
 @Component({
   selector: 'og-game',
@@ -55,6 +55,7 @@ export class GamePage {
   store = inject(StoreService);
   private toast = inject(ToastService);
   private nav = inject(BackService);
+  private dlg = inject(ConfirmService);
   canShare = typeof navigator !== 'undefined' && !!navigator.share;
 
   game = computed(() => this.store.game(this.id()));
@@ -81,8 +82,13 @@ export class GamePage {
     navigator.share({ title: g.title, text: `${g.title}\n\n${plain}` }).catch(() => {});
   }
 
-  remove() {
-    if (!confirm('Удалить статью? Это нельзя отменить.')) return;
+  async remove() {
+    const ok = await this.dlg.ask({
+      title: 'Удалить статью?',
+      text: `«${this.game()!.title}» пропадёт с этого телефона. Вернуть её можно будет только из резервной копии.`,
+      ok: 'Удалить'
+    });
+    if (!ok) return;
     this.store.deleteGame(this.id());
     this.toast.show('Статья удалена');
     this.nav.back('/my');

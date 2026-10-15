@@ -52,7 +52,7 @@ export class StoreService {
     return t;
   }
 
-  /** Сколько своих статей использует фильтр. */
+  /** Сколько своих игр использует фильтр. */
   typeUsage(id: string) {
     return this.state().games.filter(g => g.type === id).length;
   }
@@ -72,7 +72,7 @@ export class StoreService {
     let added = 0;
     this.update(s => {
       const types = [...s.types];
-      // фильтр с тем же названием (свой или встроенный) не дублируем — статьи переезжают в него
+      // фильтр с тем же названием (свой или встроенный) не дублируем — игры переезжают в него
       const remap = new Map<string, string>();
       (data.types || []).forEach((t: ActivityType) => {
         const same = [...SEED.types, ...types].find(x => x.id === t.id || x.title.toLowerCase() === t.title.toLowerCase());

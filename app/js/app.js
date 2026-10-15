@@ -1,4 +1,4 @@
-/* Огонёк — сборник игр вожатого. Всё работает офлайн: данные в data.js, свои статьи и избранное в localStorage. */
+/* Огонёк — сборник игр вожатого. Всё работает офлайн: данные в data.js, свои игры и избранное в localStorage. */
 (function () {
   'use strict';
 
@@ -72,7 +72,7 @@
     </header>`;
   }
 
-  /* Мини-разметка статьи: ## заголовок, - пункт, > совет, **жирный** */
+  /* Мини-разметка текста игры: ## заголовок, - пункт, > совет, **жирный** */
   function renderText(src) {
     const inline = s => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
     const out = [];
@@ -135,7 +135,7 @@
         <div class="age-grid">${cards}</div>
         <div class="quick">
           <a href="#/fav"><span class="ic">♥</span>Избранное<br>(${fav})</a>
-          <a href="#/my"><span class="ic">✎</span>Мои статьи<br>(${mine})</a>
+          <a href="#/my"><span class="ic">✎</span>Мои игры<br>(${mine})</a>
         </div>
       </div>`;
     },
@@ -201,7 +201,7 @@
           <div class="sheet-head">
             ${ogonek(fav ? 'love' : 'star', 70)}
             <h2>${esc(g.title)}</h2>
-            <div class="chips">${ages}${t && g.type !== 'camp' ? `<span class="chip">${esc(t.icon || '')} ${esc(t.title)}</span>` : ''}${mine ? '<span class="chip">✎ моя статья</span>' : ''}</div>
+            <div class="chips">${ages}${t && g.type !== 'camp' ? `<span class="chip">${esc(t.icon || '')} ${esc(t.title)}</span>` : ''}${mine ? '<span class="chip">✎ моя игра</span>' : ''}</div>
           </div>
           ${facts ? `<div class="facts">${facts}</div>` : ''}
           <div class="article">${renderText(g.text)}</div>
@@ -209,7 +209,7 @@
         <div class="actions">
           <button class="btn fav-btn ${fav ? 'on' : ''}" data-act="fav" data-id="${esc(g.id)}">${fav ? '♥ В избранном' : '♡ В избранное'}</button>
         </div>
-        ${mine ? `<div class="actions"><button class="btn ghost" data-act="del" data-id="${esc(g.id)}">Удалить статью</button></div>` : ''}
+        ${mine ? `<div class="actions"><button class="btn ghost" data-act="del" data-id="${esc(g.id)}">Удалить игру</button></div>` : ''}
       </div>`;
     },
 
@@ -245,7 +245,7 @@
       const st = store.get();
       const games = st.games.slice().sort(byTitle);
       return `<div class="screen">
-        ${topbar('Мои <span class="hl">статьи</span>', { noBack: true })}
+        ${topbar('Мои <span class="hl">игры</span>', { noBack: true })}
         ${games.length
           ? `<div class="list">${games.map(gameItem).join('')}</div>`
           : `<div class="empty">${ogonek('point', 130)}<p>Знаешь классную игру? Запиши её — и она всегда будет с тобой, даже без интернета.</p></div>`}
@@ -255,14 +255,14 @@
         <div class="mytypes">
           ${st.types.length ? st.types.map(t => `<div class="mytype"><span>${esc(t.icon || '★')} ${esc(t.title)}</span>
             <button class="icon-btn" data-act="deltype" data-id="${esc(t.id)}" aria-label="Удалить фильтр">${I.trash}</button></div>`).join('')
-            : `<p class="lead" style="margin:0">Свои виды активностей можно добавить при создании статьи</p>`}
+            : `<p class="lead" style="margin:0">Свои виды активностей можно добавить при создании игры</p>`}
         </div>
 
         <div class="section-title">Резервная <span class="hl">копия</span></div>
         <div class="pad" style="display:grid;gap:10px">
           <button class="btn ghost block" data-act="export" style="color:var(--cream);border-color:var(--cream)">Сохранить в файл</button>
           <label class="btn ghost block" style="color:var(--cream);border-color:var(--cream)">Загрузить из файла<input type="file" id="import" accept="application/json,.json" hidden></label>
-          <p class="lead" style="font-size:17px">Свои статьи и избранное хранятся только на этом телефоне. Сохрани файл, чтобы перенести их или поделиться с другим вожатым.</p>
+          <p class="lead" style="font-size:17px">Свои игры и избранное хранятся только на этом телефоне. Сохрани файл, чтобы перенести их или поделиться с другим вожатым.</p>
         </div>
       </div>`;
     },
@@ -406,19 +406,19 @@
     }
 
     if (act === 'del') {
-      if (!confirm('Удалить статью? Это нельзя отменить.')) return;
+      if (!confirm('Удалить игру? Это нельзя отменить.')) return;
       const id = el.dataset.id;
       st.games = st.games.filter(g => g.id !== id);
       st.fav = st.fav.filter(x => x !== id);
       store.save();
-      toast('Статья удалена');
+      toast('Игра удалена');
       return back('/my');
     }
 
     if (act === 'deltype') {
       const id = el.dataset.id;
       const used = st.games.filter(g => g.type === id).length;
-      if (used) return toast(`Фильтр используется в ${used} ${plural(used, 'статье', 'статьях', 'статьях')}`);
+      if (used) return toast(`Фильтр используется в ${used} ${plural(used, 'игре', 'играх', 'играх')}`);
       if (!confirm('Удалить фильтр?')) return;
       st.types = st.types.filter(t => t.id !== id);
       store.save(); route();
@@ -503,7 +503,7 @@
       st.games = st.games.concat(add);
       st.fav = Array.from(new Set(st.fav.concat(data.fav || [])));
       store.save();
-      toast(`Загружено статей: ${add.length}`);
+      toast(`Загружено игр: ${add.length}`);
       route();
     }).catch(() => toast('Не получилось прочитать файл'));
   });
@@ -526,7 +526,7 @@
     if (editId) st.games = st.games.map(x => x.id === editId ? g : x);
     else st.games.push(g);
     store.save();
-    toast(editId ? 'Сохранено' : 'Статья добавлена в сборник 🔥');
+    toast(editId ? 'Сохранено' : 'Игра добавлена в сборник 🔥');
     go('/game/' + encodeURIComponent(g.id), true);
   });
 

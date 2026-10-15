@@ -28,7 +28,7 @@ import { BackService, ConfirmService, OgonekComponent, RichTextComponent, ToastS
             <div class="chips">
               @for (a of g.ages; track a) { <span class="chip age">{{ store.age(a)?.title || a }}</span> }
               @if (type(); as t) { <span class="chip">{{ t.icon }} {{ t.title }}</span> }
-              @if (mine()) { <span class="chip">✎ моя статья</span> }
+              @if (mine()) { <span class="chip">✎ моя игра</span> }
             </div>
           </div>
           @if (facts().length) {
@@ -42,7 +42,7 @@ import { BackService, ConfirmService, OgonekComponent, RichTextComponent, ToastS
           <button class="btn fav-btn" [class.on]="fav()" (click)="toggleFav()">{{ fav() ? '♥ В избранном' : '♡ В избранное' }}</button>
         </div>
         @if (mine()) {
-          <div class="actions"><button class="btn ghost" (click)="remove()">Удалить статью</button></div>
+          <div class="actions"><button class="btn ghost" (click)="remove()">Удалить игру</button></div>
         }
       </div>
     } @else {
@@ -84,13 +84,13 @@ export class GamePage {
 
   async remove() {
     const ok = await this.dlg.ask({
-      title: 'Удалить статью?',
+      title: 'Удалить игру?',
       text: `«${this.game()!.title}» пропадёт с этого телефона. Вернуть её можно будет только из резервной копии.`,
       ok: 'Удалить'
     });
     if (!ok) return;
     this.store.deleteGame(this.id());
-    this.toast.show('Статья удалена');
+    this.toast.show('Игра удалена');
     this.nav.back('/my');
   }
 }

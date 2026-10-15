@@ -17,8 +17,8 @@ A camp counselor constantly needs the right game: while the group waits for the 
 
 - **Filter by age:** junior (7–10 years), middle (11–13), senior (14–17) and camp-wide events.
 - **Filter by activity type:** minute games, sports games, evening circles («свечки»), icebreakers, team building, brain games, creative games.
-- **Personal collection:** counselors mark favorites, write their own articles and create their own activity types (filters).
-- **Sharing:** your articles can be saved to a file and passed to another counselor.
+- **Personal collection:** counselors mark favorites, add their own games and create their own activity types (filters).
+- **Sharing:** your games can be saved to a file and passed to another counselor.
 - **Squad brand style:** olive, burgundy, kraft paper and the mascot Ogonek — a blue face with flaming hair ("burn yourself — light up others").
 
 Technically it is a PWA built with Angular 19: it installs on the phone's home screen, and the system back button returns to the previous screen.
@@ -49,7 +49,7 @@ Ogonek is the `<og-ogonek mood="wink" [size]="96" />` component (`src/app/ui.ts`
 
 | `mood` | | Where it is used |
 |---|:---:|---|
-| `star` | <img src="../docs/mascot/ogonek-star.png" width="40"> | home, articles |
+| `star` | <img src="../docs/mascot/ogonek-star.png" width="40"> | home, game page |
 | `wink` | <img src="../docs/mascot/ogonek-wink.png" width="40"> | splash screen, counselor tips |
 | `love` | <img src="../docs/mascot/ogonek-love.png" width="40"> | favorites, camp-wide events |
 | `cool` | <img src="../docs/mascot/ogonek-cool.png" width="40"> | senior age group |
@@ -63,7 +63,7 @@ Ogonek is the `<og-ogonek mood="wink" [size]="96" />` component (`src/app/ui.ts`
 src/app/
   app.routes.ts        routes (#/home, #/age/:ageId, #/age/:ageId/:typeId, #/game/:id, #/search, #/fav, #/my, #/new, #/edit/:id)
   app.component.ts     shell: screen + bottom tab bar + toast
-  store.service.ts     data: built-in collection + own articles/filters/favorites (signals + localStorage)
+  store.service.ts     data: built-in collection + own games/filters/favorites (signals + localStorage)
   seed.ts              built-in game collection — add "official" games here
   ui.ts                shared components: <og-ogonek>, <og-top>, <og-game-item>, <og-rich-text>
   pages/               screens: splash, home, age, games, game, search, fav, my, form
@@ -106,7 +106,7 @@ An APK can be generated with https://www.pwabuilder.com from the link in step 2.
 
 Full step-by-step guide: [INSTALL.md](../INSTALL.md).
 
-## <img src="../docs/mascot/ogonek-wow.png" width="36" align="absmiddle"> Article text markup
+## <img src="../docs/mascot/ogonek-wow.png" width="36" align="absmiddle"> Game text markup
 
 ```
 ## Subheading

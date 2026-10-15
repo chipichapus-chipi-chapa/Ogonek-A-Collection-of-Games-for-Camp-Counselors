@@ -17,7 +17,7 @@
 </p>
 
 <p align="center">
-  <img src="docs/screens.png" alt="App screens: splash, main menu, activity types, article, search" width="100%">
+  <img src="docs/screens.png" alt="App screens: splash, main menu, activity types, game page, search" width="100%">
 </p>
 
 > The app interface and the built-in game texts are in Russian; this branch contains the documentation in English.
@@ -34,8 +34,8 @@ A camp counselor constantly needs the right game: while the group waits for the 
 |---|---|
 | 🎯 **Filter by age** | junior (7–10 years), middle (11–13), senior (14–17) and camp-wide events |
 | 🗂 **Filter by activity type** | minute games, sports games, evening circles, icebreakers, team building, brain games, creative games |
-| ♥ **Personal collection** | favorites, your own articles and your own activity types (filters) |
-| 📤 **Sharing** | your articles are saved to a file and passed to another counselor |
+| ♥ **Personal collection** | favorites, your own games and your own activity types (filters) |
+| 📤 **Sharing** | your games are saved to a file and passed to another counselor |
 | 📴 **Offline** | after the first launch everything works in airplane mode |
 | ↩️ **Feels like a native app** | home screen icon; the system back button returns to the previous screen |
 
@@ -60,7 +60,7 @@ A blue face with flaming hair — the counselor spirit: **"burn yourself — lig
 
 | | Mood | Where it appears |
 |:---:|---|---|
-| <img src="docs/mascot/ogonek-star.png" width="48"> | Star eyes | home, junior group, articles |
+| <img src="docs/mascot/ogonek-star.png" width="48"> | Star eyes | home, junior group, game page |
 | <img src="docs/mascot/ogonek-wink.png" width="48"> | Wink | splash screen, counselor tips |
 | <img src="docs/mascot/ogonek-love.png" width="48"> | In love | favorites, camp-wide events |
 | <img src="docs/mascot/ogonek-cool.png" width="48"> | Cool | senior age group |
@@ -94,7 +94,7 @@ All three fonts support Cyrillic and are bundled into the app, so they work offl
 
 - **Yanone Kaffeesatz** — headings and buttons, always in caps: the poster feel of the squad's posts.
 - **Neucha** — handwritten leads and counselor tips (in place of the song quotes on the posts).
-- **Nunito** — article text and interface.
+- **Nunito** — game text and interface.
 
 ### Voice
 

@@ -4,7 +4,7 @@ import { StoreService, byTitle, plural } from '../store.service';
 import { ConfirmService, NewTypeComponent, OgonekComponent, ToastService, TopbarComponent } from '../ui';
 
 type Tab = 'games' | 'types' | 'backup';
-// выбранная вкладка переживает переход в статью и обратно
+// выбранная вкладка переживает переход в игру и обратно
 const tab = signal<Tab>('games');
 
 const AGE_SHORT: Record<string, string> = { junior: '7–10', middle: '11–13', senior: '14–17', camp: 'лагерь' };
@@ -18,7 +18,7 @@ const AGE_SHORT: Record<string, string> = { junior: '7–10', middle: '11–13',
 
       <div class="seg" role="tablist">
         <button role="tab" [class.on]="tab() === 'games'" [attr.aria-selected]="tab() === 'games'" (click)="tab.set('games')">
-          Статьи <span class="n">{{ games().length }}</span></button>
+          Игры <span class="n">{{ games().length }}</span></button>
         <button role="tab" [class.on]="tab() === 'types'" [attr.aria-selected]="tab() === 'types'" (click)="tab.set('types')">
           Фильтры <span class="n">{{ store.myTypes().length }}</span></button>
         <button role="tab" [class.on]="tab() === 'backup'" [attr.aria-selected]="tab() === 'backup'" (click)="tab.set('backup')">Копия</button>
@@ -69,7 +69,7 @@ const AGE_SHORT: Record<string, string> = { junior: '7–10', middle: '11–13',
 
         @case ('backup') {
           <div class="pad backup">
-            <p class="lead small">Свои статьи, фильтры и избранное хранятся <span class="hl">только на этом телефоне</span>. Сохрани файл, чтобы перенести их или поделиться с другим вожатым.</p>
+            <p class="lead small">Свои игры, фильтры и избранное хранятся <span class="hl">только на этом телефоне</span>. Сохрани файл, чтобы перенести их или поделиться с другим вожатым.</p>
             <button class="btn ghost light block" (click)="exportFile()">Сохранить в файл</button>
             <label class="btn ghost light block">Загрузить из файла
               <input type="file" accept="application/json,.json" hidden (change)="importFile($event)"></label>
@@ -95,17 +95,17 @@ export class MyPage {
 
   usage(id: string) {
     const n = this.store.typeUsage(id);
-    return n ? `${n} ${plural(n, 'статья', 'статьи', 'статей')}` : 'пока пусто';
+    return n ? `${n} ${plural(n, 'игра', 'игры', 'игр')}` : 'пока пусто';
   }
 
   async delType(id: string) {
     const t = this.store.myTypes().find(x => x.id === id);
     if (!t) return;
     const used = this.store.typeUsage(id);
-    if (used) return this.toast.show(`Фильтр используется в ${used} ${plural(used, 'статье', 'статьях', 'статьях')}`);
+    if (used) return this.toast.show(`Фильтр используется в ${used} ${plural(used, 'игре', 'играх', 'играх')}`);
     const ok = await this.dlg.ask({
       title: 'Удалить фильтр?',
-      text: `«${t.title}» исчезнет из всех возрастов. Статей в нём нет, так что ничего не потеряется.`,
+      text: `«${t.title}» исчезнет из всех возрастов. Игр в нём нет, так что ничего не потеряется.`,
       ok: 'Удалить',
       mood: 'sleepy'
     });
@@ -128,7 +128,7 @@ export class MyPage {
     const file = input.files?.[0];
     if (!file) return;
     file.text()
-      .then(txt => this.toast.show(`Загружено статей: ${this.store.importJson(txt)}`))
+      .then(txt => this.toast.show(`Загружено игр: ${this.store.importJson(txt)}`))
       .catch(() => this.toast.show('Не получилось прочитать файл'))
       .finally(() => (input.value = ''));
   }

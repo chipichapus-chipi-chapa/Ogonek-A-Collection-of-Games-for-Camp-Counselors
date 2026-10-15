@@ -5,7 +5,7 @@ import { Game } from '../models';
 import { StoreService } from '../store.service';
 import { BackService, NewTypeComponent, OgonekComponent, ToastService, TopbarComponent } from '../ui';
 
-/** Создание и правка своей статьи. /new?age=..&type=.. или /edit/:id */
+/** Создание и правка своей игры. /new?age=..&type=.. или /edit/:id */
 @Component({
   selector: 'og-form',
   imports: [FormsModule, RouterLink, TopbarComponent, OgonekComponent, NewTypeComponent],
@@ -55,7 +55,7 @@ import { BackService, NewTypeComponent, OgonekComponent, ToastService, TopbarCom
       </div>
     } @else {
       <div class="screen"><og-top title="Упс" />
-        <div class="empty"><og-ogonek mood="wow" [size]="120" /><p>Эту статью нельзя редактировать</p><a class="btn yellow" routerLink="/home">На главную</a></div></div>
+        <div class="empty"><og-ogonek mood="wow" [size]="120" /><p>Эту игру нельзя редактировать</p><a class="btn yellow" routerLink="/home">На главную</a></div></div>
     }`
 })
 export class FormPage implements OnInit {
@@ -117,12 +117,12 @@ export class FormPage implements OnInit {
       text: this.d.text.trim()
     };
     this.store.saveGame(g);
-    this.toast.show(this.id() ? 'Сохранено' : 'Статья добавлена в сборник 🔥');
+    this.toast.show(this.id() ? 'Сохранено' : 'Игра добавлена в сборник 🔥');
     if (this.id()) {
-      // правка: возвращаемся к статье, из которой пришли, — без дубля в истории
+      // правка: возвращаемся к игре, из которой пришли, — без дубля в истории
       this.nav.back('/game/' + g.id);
     } else {
-      // новая: replaceUrl — «назад» со статьи не вернёт в форму
+      // новая: replaceUrl — «назад» с игры не вернёт в форму
       this.router.navigate(['/game', g.id], { replaceUrl: true });
     }
   }

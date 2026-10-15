@@ -311,6 +311,7 @@ body.red .top { background: linear-gradient(var(--red) 70%, rgba(140, 34, 25, 0)
 .tabbar a.plus em { font-style: normal; color: var(--ink-soft); }
 
 .toast {
+  transition: opacity .25s, transform .35s cubic-bezier(.3, 1.5, .5, 1) !important;
   position: fixed; z-index: 20; left: 50%; bottom: calc(100px + var(--safe-b)); transform: translate(-50%, 20px);
   background: var(--ink); color: var(--cream); padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 15px;
   opacity: 0; pointer-events: none; transition: .25s; white-space: nowrap; max-width: 90vw; overflow: hidden; text-overflow: ellipsis;
@@ -367,3 +368,70 @@ og-confirm { position: relative; z-index: 30; }
 @keyframes sheet-up { from { transform: translate(-50%, 100%); } }
 @keyframes og-pop { from { opacity: 0; transform: translateY(30px) scale(.7); } }
 @media (prefers-reduced-motion: reduce) { .sheet-backdrop, .confirm-sheet, .confirm-sheet .cf-og { animation: none; } }
+
+/* ─── Анимации интерфейса ─── */
+/* карточки и строки списков выезжают по очереди */
+.age-grid > *, .quick > *, .list > *, .mytypes > *, .facts > * { animation: rise-in .42s cubic-bezier(.2, .8, .2, 1) both; }
+.age-grid > :nth-child(2), .list > :nth-child(2), .mytypes > :nth-child(2), .facts > :nth-child(2) { animation-delay: .05s; }
+.age-grid > :nth-child(3), .list > :nth-child(3), .mytypes > :nth-child(3), .facts > :nth-child(3) { animation-delay: .1s; }
+.age-grid > :nth-child(4), .list > :nth-child(4), .mytypes > :nth-child(4) { animation-delay: .15s; }
+.list > :nth-child(5), .mytypes > :nth-child(5) { animation-delay: .2s; }
+.list > :nth-child(6), .mytypes > :nth-child(6) { animation-delay: .25s; }
+.list > :nth-child(7) { animation-delay: .3s; }
+.list > :nth-child(n+8) { animation-delay: .34s; }
+.quick > * { animation-delay: .2s; }
+.quick > :nth-child(2) { animation-delay: .25s; }
+@keyframes rise-in { from { opacity: 0; transform: translateY(18px); } }
+
+/* Огоньки на карточках возрастов покачиваются, каждый в своём ритме */
+.age-card .ogonek { transform-origin: 50% 90%; animation: sway 4.5s ease-in-out infinite; }
+.age-card:nth-child(2) .ogonek { animation-duration: 5.2s; animation-delay: -1.2s; }
+.age-card:nth-child(3) .ogonek { animation-duration: 4.1s; animation-delay: -2.4s; }
+.age-card:nth-child(4) .ogonek { animation-duration: 5.6s; animation-delay: -.6s; }
+@keyframes sway { 0%, 100% { transform: rotate(-4deg); } 50% { transform: rotate(5deg) translateY(-3px); } }
+
+/* Огонёк в пустых экранах парит */
+.empty .ogonek { animation: bob 3.2s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-8px) rotate(2deg); } }
+
+/* Огонёк в углу статьи «впрыгивает», когда меняет эмоцию (избранное) */
+.sheet-head og-ogonek.corner .ogonek { animation: corner-in .5s cubic-bezier(.3, 1.6, .5, 1) both; }
+@keyframes corner-in { from { opacity: 0; transform: rotate(12deg) scale(.4) translateY(20px); } to { transform: rotate(12deg); } }
+
+/* совет вожатому: Огонёк подмигивает при появлении */
+.article .tip .ogonek { animation: wiggle .9s ease .35s both; }
+@keyframes wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-12deg) scale(1.08); } 55% { transform: rotate(9deg); } 80% { transform: rotate(-4deg); } }
+
+/* кнопка избранного «пружинит» при добавлении */
+.fav-btn.on { animation: pop .45s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes pop { 0% { transform: scale(.88); } 60% { transform: scale(1.06); } 100% { transform: none; } }
+
+/* переключатели фильтров */
+.tog { transition: background-color .18s, color .18s, border-color .18s, transform .12s; }
+.tog:active { transform: scale(.94); }
+.tog.on { animation: tog-pop .28s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes tog-pop { 50% { transform: scale(1.08); } }
+
+/* нижнее меню: иконка активной вкладки подпрыгивает, «+» поворачивается при нажатии */
+.tabbar a { transition: color .2s, background-color .2s; }
+.tabbar a.on svg { animation: tab-hop .45s cubic-bezier(.3, 1.6, .5, 1); }
+@keyframes tab-hop { 40% { transform: translateY(-5px) scale(1.12); } }
+.tabbar a.plus span.pl { transition: transform .25s cubic-bezier(.3, 1.6, .5, 1); }
+.tabbar a.plus:active span.pl { transform: rotate(90deg) scale(.92); }
+
+/* вкладки «Моей копилки»: содержимое мягко сменяется */
+.seg button { transition: background-color .2s, color .2s, box-shadow .2s; }
+og-my .backup, og-my .empty, og-my > .screen > .lead { animation: rise-in .3s ease both; }
+
+/* ошибка в форме качается */
+.err.shake { animation: shake .45s ease; }
+@keyframes shake { 20%, 60% { transform: translateX(-6px); } 40%, 80% { transform: translateX(6px); } }
+
+/* «Поехали!» мягко зовёт нажать */
+.splash .btn { animation: btn-pop .5s cubic-bezier(.3, 1.6, .5, 1) 1.9s both, nudge 2.6s ease-in-out 3.2s infinite; }
+@keyframes nudge { 0%, 70%, 100% { transform: none; } 80% { transform: scale(1.06) rotate(-2deg); } 90% { transform: scale(1.03) rotate(1.5deg); } }
+
+/* кому мешает движение — без анимаций */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; animation-delay: 0s !important; transition-duration: .01ms !important; }
+}

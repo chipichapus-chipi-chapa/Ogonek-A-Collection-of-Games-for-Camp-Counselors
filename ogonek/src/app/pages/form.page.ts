@@ -49,7 +49,7 @@ import { BackService, NewTypeComponent, OgonekComponent, ToastService, TopbarCom
             <textarea id="f-text" name="text" [(ngModel)]="d.text" placeholder="Как играть, правила, советы…"></textarea>
             <div class="hint">Оформление: <b>## Заголовок</b> · <b>- пункт списка</b> · <b>&gt; совет вожатому</b> · пустая строка — новый абзац</div></div>
 
-          <div class="err">{{ err() }}</div>
+          @for (k of [errTick()]; track k) { <div class="err" [class.shake]="k > 0" role="alert">{{ err() }}</div> }
           <button class="btn block" type="submit">{{ id() ? 'Сохранить' : 'Добавить в сборник' }}</button>
         </form>
       </div>
@@ -78,6 +78,11 @@ export class FormPage implements OnInit {
   type = signal('');
   showNewType = signal(false);
   err = signal('');
+  errTick = signal(0);
+  private fail(msg: string) {
+    this.err.set(msg);
+    this.errTick.update(n => n + 1);
+  }
   onlyCamp = computed(() => this.ages().length > 0 && this.ages().every(a => a === 'camp'));
   heading = computed<[string, string]>(() =>
     this.id() ? ['Правка', this.onlyCamp() ? 'мероприятия' : 'игры'] : this.onlyCamp() ? ['Новое', 'мероприятие'] : ['Новая', 'игра']);
@@ -101,10 +106,10 @@ export class FormPage implements OnInit {
 
   save() {
     const type = this.onlyCamp() ? 'camp' : this.type();
-    if (!this.d.title.trim()) return this.err.set('Добавь название');
-    if (!this.ages().length) return this.err.set('Выбери, для кого эта игра');
-    if (!type || (type === 'camp' && !this.onlyCamp())) return this.err.set('Выбери вид активности');
-    if (!this.d.text.trim()) return this.err.set('Опиши, как играть');
+    if (!this.d.title.trim()) return this.fail('Добавь название');
+    if (!this.ages().length) return this.fail('Выбери, для кого эта игра');
+    if (!type || (type === 'camp' && !this.onlyCamp())) return this.fail('Выбери вид активности');
+    if (!this.d.text.trim()) return this.fail('Опиши, как играть');
 
     const g: Game = {
       id: this.original()?.id || this.store.newId(),

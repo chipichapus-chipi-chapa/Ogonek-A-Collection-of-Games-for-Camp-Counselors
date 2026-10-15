@@ -17,6 +17,10 @@
 </p>
 
 <p align="center">
+  <a href="https://chipichapus-chipi-chapa.github.io/Ogonek-A-Collection-of-Games-for-Camp-Counselors/"><b>🌐 Открыть сайт приложения</b></a> &nbsp;·&nbsp; <a href="https://github.com/chipichapus-chipi-chapa/Ogonek-A-Collection-of-Games-for-Camp-Counselors/releases/download/android/ogonek.apk"><b>📱 Скачать для Android (APK)</b></a> &nbsp;·&nbsp; <a href="INSTALL.md"><b>Как установить</b></a>
+</p>
+
+<p align="center">
   <img src="docs/screens.png" alt="Экраны приложения: заставка, меню, виды активности, игра, поиск" width="100%">
 </p>
 

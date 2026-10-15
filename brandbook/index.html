@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Огонёк — брендбук</title>
+  <meta name="description" content="Брендбук приложения «Огонёк — сборник игр вожатого» для СПО «Маэстро»">
+  <link rel="icon" href="../ogonek/public/favicon.png">
+  <link rel="stylesheet" href="../ogonek/src/fonts/fonts.css">
+  <link rel="stylesheet" href="css/brandbook.css">
+</head>
+<body>
+
+<header class="cover grain">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Брендбук · СПО «Маэстро» · 2026</div>
+      <h1>Огонёк<br><span class="hl">сборник</span> игр</h1>
+      <p class="hand">Мобильное приложение для вожатых. Стиль взят с постов «Выборы ком.состава 2026–2027»: олива, бордо, крафт и озорной синий Огонёк.</p>
+    </div>
+    <div class="art" id="cover-art"></div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Разделы">
+  <div class="wrap">
+    <a href="#mascot">Маскот</a><a href="#colors">Цвета</a><a href="#type">Шрифты</a><a href="#graphics">Графика</a>
+    <a href="#ui">Интерфейс</a><a href="#screens-s">Экраны</a><a href="#motion-s">Анимация</a><a href="#voice">Голос</a><a href="#icon">Иконка</a>
+  </div>
+</nav>
+
+<section id="mascot">
+  <div class="wrap">
+    <div class="num">01</div>
+    <h2>Маскот — Огонёк</h2>
+    <p class="intro">Синяя мордашка с волосами-пламенем — вожатский дух: «гореть самому и зажигать других». Огонёк нарисован от руки мелками, как на постах ком.состава. У него 7 эмоций, и у каждой своя роль в приложении.</p>
+    <div class="grid g7" id="mood-list"></div>
+    <div class="card mascot-rules">
+      <h3>Как использовать</h3>
+      <ul class="clean">
+        <li>Один Огонёк на экран: он подсказывает настроение, а не украшает каждый угол.</li>
+        <li>Эмоция совпадает с ситуацией: радость — у контента, удивление — у ошибок и пустого поиска, сон — у пустых разделов.</li>
+        <li>Не перекрашивать, не растягивать, не обрезать пламя. Фон под рисунком — любой из палитры.</li>
+        <li>Файлы: <code>ogonek/public/img/ogonek/&lt;эмоция&gt;.webp</code>, для документов — <code>docs/mascot/*.png</code>. В коде: <code>&lt;og-ogonek mood="wink" [size]="96" /&gt;</code>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="colors">
+  <div class="wrap">
+    <div class="num">02</div>
+    <h2>Цвета</h2>
+    <p class="intro">Палитра взята с постов. Олива и бордо — основные фоны, они чередуются, как карточки ком.состава. Крафт, кремовый и бумага — то, на чём «лежит» контент. Жёлтым выделяем одно-два ключевых слова в заголовке. Рядом с HEX — имя CSS-переменной из <code>ogonek/src/styles/_base.scss</code>.</p>
+    <div class="grid g3" id="color-list"></div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="wrap">
+    <div class="num">03</div>
+    <h2>Шрифты</h2>
+    <p class="intro">Три шрифта, все с кириллицей и вшиты в приложение, поэтому работают без интернета. Узкий капслок передаёт плакатный характер постов, рукописный заменяет цитаты из песен.</p>
+    <div class="type-row"><div class="meta"><b>Yanone Kaffeesatz Bold</b>Заголовки, кнопки · всегда капсом</div>
+      <h1 style="font-size:64px;color:var(--red)">Кого <span class="hl">зажигаем</span>?</h1></div>
+    <div class="type-row"><div class="meta"><b>Neucha</b>Подводки, советы вожатому</div>
+      <div class="hand" style="font-size:32px">гореть самому — <span style="color:var(--red)">зажигать других</span></div></div>
+    <div class="type-row"><div class="meta"><b>Nunito 400–800</b>Текст игр, интерфейс</div>
+      <div style="font-size:18px">Игроки встают в круг, ведущий в центре. <b>Жирное начертание</b> — для названий игр в списках.</div></div>
+  </div>
+</section>
+
+<section id="graphics">
+  <div class="wrap">
+    <div class="num">04</div>
+    <h2>Графические элементы</h2>
+    <p class="intro">Коллаж из бумаги, как на обложке выборов: зернистый фон, повёрнутый лист крафта, красная звезда-взрыв и фото в кремовой рамке. Всё это есть на заставке приложения.</p>
+    <div class="grid g3">
+      <div class="el grain"><div class="sheet"></div><span class="lbl">Лист крафта · −8°</span></div>
+      <div class="el grain" style="background:var(--red)"><div id="star-demo" style="width:60%"></div><span class="lbl">Звезда-взрыв</span></div>
+      <div class="el grain"><div class="polaroid"><div></div></div><span class="lbl">Фото в рамке · +2…3°</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="ui">
+  <div class="wrap">
+    <div class="num">05</div>
+    <h2>Интерфейс</h2>
+    <p class="intro">Крупные скруглённые карточки, кнопки-«таблетки» и маскот на экране. Радиус карточек 18–26 px, у кнопок — полный. Тень «вдавленная» снизу, как у стикера. Боковые отступы — 16 px; всё проверено на узком телефоне шириной 360 px.</p>
+    <div class="grid g2">
+      <div class="demo light">
+        <h3>Кнопки</h3>
+        <div class="row"><span class="btn r">В избранное</span><span class="btn y">Поехали!</span></div>
+        <div class="row"><span class="btn g">+ Добавить сюда игру</span></div>
+        <p class="note">Бордовая — главное действие, жёлтая — старт и «к играм», контурная — второстепенное.</p>
+      </div>
+      <div class="demo light">
+        <h3>Метки и фильтры</h3>
+        <div class="row"><span class="chip age">Младший возраст</span><span class="chip on">⚽ Спортивные игры</span><span class="chip out">⏱ 5–10 мин</span></div>
+        <p class="note">Оливковая — возраст, жёлтая — включённый фильтр, контурная — вид активности и подробности.</p>
+      </div>
+      <div class="demo">
+        <h3 style="color:var(--cream)">Строки списков</h3>
+        <div class="item"><span class="ic">⏱</span><span class="b"><span class="ttl">Игры-минутки</span><span class="meta">Пока ждём столовую или автобус</span></span><span class="cnt">7</span></div>
+        <div class="item"><span class="ic">О</span><span class="b"><span class="ttl">Огоньки в темноте</span><span class="meta"><span class="mine">моя</span>Вечерние игры · 15 мин</span></span><span style="color:var(--red-bright)">♥</span></div>
+        <p class="note" style="color:var(--cream)">Название — максимум две строки, подробности ниже серым.</p>
+      </div>
+      <div class="demo">
+        <h3 style="color:var(--cream)">Вкладки «Моей копилки»</h3>
+        <div class="seg"><span class="on">Игры 3</span><span>Фильтры 2</span><span>Копия</span></div>
+        <div class="tip"><span data-og="wink"></span><div>Совет вожатому: плашка с Огоньком внутри текста игры.</div></div>
+        <div class="toast-demo">Игра добавлена в сборник 🔥</div>
+      </div>
+      <div class="demo" style="padding-bottom:0;overflow:hidden">
+        <h3 style="color:var(--cream)">Окно подтверждения</h3>
+        <div class="confirm"><span data-og="wow"></span><h4>Удалить игру?</h4>
+          <p>«Огоньки в темноте» пропадёт с этого телефона.</p>
+          <div class="row"><span class="btn g">Отмена</span><span class="btn r">Удалить</span></div></div>
+      </div>
+      <div class="demo light">
+        <h3>Правила</h3>
+        <ul class="clean">
+          <li>Системные окна (<code>alert</code>, <code>confirm</code>) не используем — только своё окно снизу.</li>
+          <li>Фокус в окне — на «Отмена»: случайный Enter ничего не удалит.</li>
+          <li>Кнопка «назад» телефона закрывает окно, а не уходит со страницы.</li>
+          <li>Результат действия — короткая подсказка-тост внизу.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="screens-s">
+  <div class="wrap">
+    <div class="num">06</div>
+    <h2>Экраны</h2>
+    <p class="intro">Angular-версия приложения на телефоне шириной 375 px. Олива — основной фон, старший возраст — бордо, как на постах.</p>
+    <div class="phones" id="screen-list"></div>
+  </div>
+</section>
+
+<section id="motion-s">
+  <div class="wrap">
+    <div class="num">07</div>
+    <h2>Анимация</h2>
+    <p class="intro">Движение подсказывает, что произошло, и оживляет Огонька — но не мешает. Короткие отклики на нажатия (до 0,5 с), мягкое «пружинное» замедление, бесконечные движения — только у маскота и очень медленные. Если на телефоне включено «уменьшить движение», анимации отключаются.</p>
+    <div class="motion" id="motion-list"></div>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="wrap">
+    <div class="num">08</div>
+    <h2>Голос и слова</h2>
+    <p class="intro">Говорим как старший товарищ-вожатый: на «ты», коротко, с огоньком, без канцелярита. Одни и те же вещи везде называем одинаково.</p>
+    <div class="grid g2">
+      <div class="card do"><h3>Так</h3><ul class="clean">
+        <li>«Кого зажигаем?»</li><li>«+ Новая игра»</li><li>«Удалить игру?»</li>
+        <li>«Игра добавлена в сборник 🔥»</li><li>«Здесь пока пусто. Добавь свою игру — Огонёк проснётся!»</li></ul></div>
+      <div class="card dont"><h3>Не так</h3><ul class="clean">
+        <li>«Выберите возрастную категорию»</li><li>«Создать статью»</li><li>«Вы уверены?» (системное окно)</li>
+        <li>«Данные отсутствуют»</li><li>Больше одного жёлтого выделения в заголовке; синий цвет вне маскота</li></ul></div>
+    </div>
+    <h3 class="sub-h">Словарь</h3>
+    <table class="terms" id="term-list"></table>
+  </div>
+</section>
+
+<section id="icon">
+  <div class="wrap">
+    <div class="num">09</div>
+    <h2>Иконка приложения</h2>
+    <p class="intro">Подмигивающий Огонёк на кружке крафта, фон — олива. Рисунок занимает 80% — в безопасной зоне, поэтому Android может обрезать иконку в круг или «каплю» без потерь. Файлы: <code>ogonek/public/icons/</code>.</p>
+    <div class="icons" id="icon-list"></div>
+  </div>
+</section>
+
+<footer class="grain"><div class="wrap"><span data-og="love"></span><p>Гореть самому — зажигать других</p></div></footer>
+
+<script src="js/brandbook.js"></script>
+</body>
+</html>

@@ -12,7 +12,7 @@ import { BackService, NewTypeComponent, OgonekComponent, ToastService, TopbarCom
   template: `
     @if (!id() || original()) {
       <div class="screen">
-        <og-top [title]="id() ? 'Правка' : 'Новая'" hl="статья" fallback="/my" />
+        <og-top [title]="heading()[0]" [hl]="heading()[1]" fallback="/my" />
         <form class="form" (ngSubmit)="save()" novalidate>
           <div class="field"><label for="f-title">Название</label>
             <input type="text" id="f-title" name="title" [(ngModel)]="d.title" placeholder="Например: «Огоньки в темноте»" maxlength="120"></div>
@@ -79,6 +79,8 @@ export class FormPage implements OnInit {
   showNewType = signal(false);
   err = signal('');
   onlyCamp = computed(() => this.ages().length > 0 && this.ages().every(a => a === 'camp'));
+  heading = computed<[string, string]>(() =>
+    this.id() ? ['Правка', this.onlyCamp() ? 'мероприятия' : 'игры'] : this.onlyCamp() ? ['Новое', 'мероприятие'] : ['Новая', 'игра']);
 
   ngOnInit() {
     const g = this.original();

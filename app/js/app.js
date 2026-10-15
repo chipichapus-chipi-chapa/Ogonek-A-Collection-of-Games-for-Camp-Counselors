@@ -249,7 +249,7 @@
         ${games.length
           ? `<div class="list">${games.map(gameItem).join('')}</div>`
           : `<div class="empty">${ogonek('point', 130)}<p>Знаешь классную игру? Запиши её — и она всегда будет с тобой, даже без интернета.</p></div>`}
-        <div class="pad" style="margin-top:14px"><a class="btn block" href="#/new">+ Новая статья</a></div>
+        <div class="pad" style="margin-top:14px"><a class="btn block" href="#/new">+ Новая игра</a></div>
 
         <div class="section-title">Мои <span class="hl">фильтры</span></div>
         <div class="mytypes">
@@ -273,7 +273,7 @@
       const d = g || { title: '', ages: params.get('age') ? [params.get('age')] : [], type: params.get('type') || '', time: '', players: '', props: '', text: '' };
       formState = { ages: d.ages.slice(), type: d.type };
       return `<div class="screen">
-        ${topbar(g ? 'Правка <span class="hl">статьи</span>' : 'Новая <span class="hl">статья</span>', { fallback: '/my' })}
+        ${topbar(g ? 'Правка <span class="hl">игры</span>' : 'Новая <span class="hl">игра</span>', { fallback: '/my' })}
         <form class="form" id="gform" novalidate>
           <div class="field"><label for="f-title">Название</label>
             <input type="text" id="f-title" value="${esc(d.title)}" placeholder="Например: «Огоньки в темноте»" maxlength="120"></div>
@@ -376,7 +376,7 @@
     $tabs.hidden = false;
     const t = (id, href, icon, label) => `<a href="${href}" class="${active === id ? 'on' : ''}" ${active === id ? 'aria-current="page"' : ''}>${icon}<span>${label}</span></a>`;
     $tabs.innerHTML = t('home', '#/home', I.home, 'Игры') + t('search', '#/search', I.search, 'Поиск')
-      + `<a href="#/new" class="plus" aria-label="Новая статья"><span class="pl">${I.plus}</span><em>Создать</em></a>`
+      + `<a href="#/new" class="plus" aria-label="Новая игра"><span class="pl">${I.plus}</span><em>Создать</em></a>`
       + t('fav', '#/fav', I.heart, 'Избранное') + t('my', '#/my', I.pen, 'Мои');
   }
 

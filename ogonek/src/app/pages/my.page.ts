@@ -48,7 +48,7 @@ const AGE_SHORT: Record<string, string> = { junior: '7–10', middle: '11–13',
             <div class="empty"><og-ogonek mood="point" [size]="120" />
               <p>Знаешь классную игру? Запиши её — и она всегда будет с тобой, даже без интернета.</p></div>
           }
-          <div class="pad mt"><a class="btn block" routerLink="/new">+ Новая статья</a></div>
+          <div class="pad mt"><a class="btn block" routerLink="/new">+ Новая игра</a></div>
         }
 
         @case ('types') {
